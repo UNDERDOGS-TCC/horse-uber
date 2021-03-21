@@ -1,0 +1,7 @@
+{
+  "name": "horseUber",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
