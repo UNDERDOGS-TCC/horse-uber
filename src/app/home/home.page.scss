@@ -1,3 +1,5 @@
+@import "../../theme/variables.scss";
+
 #container {
   text-align: center;
 
@@ -24,4 +26,9 @@
 
 #container a {
   text-decoration: none;
+}
+
+.header {
+  background-color: #ADA388;
+  text-align: center;
 }
