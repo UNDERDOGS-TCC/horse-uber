@@ -1,0 +1,16 @@
+@import '../../theme/variables';
+
+.pageTitle {
+    justify-content: center;
+    font-family: $font-text;
+    color: $font-title-text-color;
+    font-size: $font-size-page-title;
+    padding: 10px;
+}
+.pageSubTitle {
+    justify-content: center;
+    font-family: $font-text;
+    color: $font-title-text-color;
+    font-size: $font-size-page-subtitle;
+    padding: 10px;
+}
