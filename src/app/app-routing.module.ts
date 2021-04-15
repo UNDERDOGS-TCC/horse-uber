@@ -11,6 +11,11 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'make-a-ride',
+    loadChildren: () => import('./make-a-ride/make-a-ride.module').then( m => m.MakeARidePageModule)
+  },
+
 ];
 
 @NgModule({
