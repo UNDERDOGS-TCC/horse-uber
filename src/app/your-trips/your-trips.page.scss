@@ -1,0 +1,30 @@
+p{
+  margin-top: 10px;
+}
+.new-background-color{
+    --background: #79682C ;
+}
+.new-body-color{
+  --background: White;
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+ion-col {
+  text-align: right;
+}
+.div-col{
+  float: right;
+  text-align: right;
+  font-weight: bold;
+}
+.div-col1{
+  display: inline;
+}
+#Valor-corrida{
+  font-size: 12px;
+  font-weight: bold;
+}
