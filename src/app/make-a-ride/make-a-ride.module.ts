@@ -8,6 +8,7 @@ import { MakeARidePageRoutingModule } from './make-a-ride-routing.module';
 
 import { MakeARidePage } from './make-a-ride.page';
 import { HeaderComponent } from '../header/header.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HeaderComponent } from '../header/header.component';
   ],
   declarations: [
     MakeARidePage,
-    HeaderComponent
+    HeaderComponent,
+    MenuComponent
   ]
 })
 export class MakeARidePageModule {}

@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap%27');
 
+// Header
+
+$header-background-color: #ADA388;
 
 // Background
 
-$background-color-brown: #ADA388;
 $background-color-white: #FFFFFF;
 
 // Fontes
 
+    // Header
+
+    $font-text: 'IBM Plex Sans', sans-serif;
+    $font-size-header-title: 22px;
+    $font-header-text-color: #ffffff;
+
+    // PageTitle
+    $font-size-page-title: 20px;
+    $font-title-text-color: #000000;
+
+    // PageTitle
+    $font-size-page-subtitle: 18px;
