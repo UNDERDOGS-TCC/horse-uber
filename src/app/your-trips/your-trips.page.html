@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+<app-header title="Suas Viagens"></app-header>
+
+<ion-content class="new-body-color" mode="ios">
+  <ion-card class="new-body-color" mode="ios" *ngFor="let ride of rides">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-drid>
+          <ion-col>
+            <div class="div-col1">
+              {{ride.ride_date}}, {{ride.ride_hour}}
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="div-col">
+              {{ ride.horse_name }}
+            </div>
+          </ion-col>
+        </ion-drid>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="ion-text-start">
+        <p>Origem: {{ride.origin_ride}}</p>
+      </div>
+      <div class="ion-text-start">
+        <p>Destino: {{ride.destination_ride}}</p>
+      </div>
+      <div class="ion-text-end">
+        <p id="Valor-corrida">{{ride.ride_value}}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
