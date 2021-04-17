@@ -5,6 +5,9 @@ import { IonicModule } from '@ionic/angular';
 import { YourTripsPageRoutingModule } from './your-trips-routing.module';
 import { YourTripsPage } from './your-trips.page';
 
+import { HeaderComponent } from '../header/header.component';
+import { MenuComponent } from '../menu/menu.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,6 +15,10 @@ import { YourTripsPage } from './your-trips.page';
     IonicModule,
     YourTripsPageRoutingModule
   ],
-  declarations: [YourTripsPage]
+  declarations: [
+    YourTripsPage,
+    HeaderComponent,
+    MenuComponent,
+  ]
 })
 export class YourTripsPageModule {}
