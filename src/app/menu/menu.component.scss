@@ -1,3 +1,5 @@
+@import "../../theme/variables.scss";
+
 .my-custom-menu {
     --width: 80%;
 }
@@ -9,4 +11,7 @@
 }
 .padding-avatar {
     padding-top: 50px;
+}
+ion-label {
+    font-family: $font-text !important;
 }
