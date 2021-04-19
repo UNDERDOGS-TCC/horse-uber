@@ -14,3 +14,8 @@
     font-size: $font-size-page-subtitle;
     padding: 10px;
 }
+.button {
+    --background: none;
+    background-color: $header-background-color;
+    font-family: $font-text;
+}

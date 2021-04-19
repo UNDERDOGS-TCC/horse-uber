@@ -1,15 +1,17 @@
 <ion-header class="ion-no-border" mode="md">
   <ion-toolbar class="new-background-color">
     <ion-grid>
-      <ion-row>
+      <ion-row class="header-row">
         <ion-col>
           <ion-menu-button autoHide="false" color="light">
           </ion-menu-button>
         </ion-col>
         <ion-col>
-            <ion-title class="font"><b>{{ title }}</b></ion-title>
+          <ion-title class="font"><b>{{ title }}</b></ion-title>
         </ion-col>
-        <ion-col></ion-col>
+        <ion-col>
+          <ion-back-button [routerLink]="['/home']" defaultHref="home" color="light"></ion-back-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-toolbar>
