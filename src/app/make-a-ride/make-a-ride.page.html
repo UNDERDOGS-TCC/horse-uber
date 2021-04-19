@@ -1,15 +1,31 @@
-<ion-content>
-    <app-menu></app-menu>
-    <app-header title="Home"></app-header>
-
+<app-menu></app-menu>
+<ion-header class="ion-no-border" mode="md">
+  <ion-toolbar class="new-background-color">
     <ion-grid>
-        <ion-row class="pageTitle">
-            <b>Precisa de um cavalo?</b>
-        </ion-row>
-        <ion-row class="pageSubTitle">
-            Nós ajudamos você a encontrar um cavalo e ter uma boa viajem!
-        </ion-row>
+      <ion-row class="header-row">
+        <ion-col>
+          <ion-menu-button autoHide="false" color="light">
+          </ion-menu-button>
+        </ion-col>
+        <ion-col>
+          <ion-title class="font"><b>Home</b></ion-title>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
     </ion-grid>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-button class="button" expand="block">Para onde?</ion-button>
+<ion-content>
+  <ion-grid>
+    <ion-row class="pageTitle">
+      <b>Precisa de um cavalo?</b>
+    </ion-row>
+    <ion-row class="pageSubTitle">
+      Nós ajudamos você a encontrar um cavalo e ter uma boa viajem!
+    </ion-row>
+  </ion-grid>
+
+  <ion-button class="button" expand="block" mode="md">Para onde?</ion-button>
 </ion-content>

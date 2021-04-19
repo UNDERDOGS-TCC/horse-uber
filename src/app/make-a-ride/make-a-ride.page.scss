@@ -19,3 +19,16 @@
     background-color: $header-background-color;
     font-family: $font-text;
 }
+.new-background-color {
+    --background: none;
+    background-color: $header-background-color;
+}
+.font {
+    --color: none;
+    font-family: $font-text;
+    font-size: $font-size-header-title;
+    color: $font-header-text-color;
+}
+.header-row {
+    align-items: center;
+}
