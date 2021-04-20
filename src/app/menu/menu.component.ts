@@ -7,12 +7,43 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
+  pages: any;
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController) {
+    this.Hamburguer();
+  }
 
-    openFirst() {
-      this.menu.enable(true, 'menu');
-      this.menu.open('menu');
-    }
-
+  Hamburguer() {
+    this.pages =
+      [
+        {
+          title: "Mensagens",
+          url: "",
+        },
+        {
+          title: "Ganhe Dinheiro Cavalgando",
+          url: "",
+        },
+        {
+          title: "Suas Viagens",
+          url: "/your-trips",
+        },
+        {
+          title: "Pagamentos",
+          url: "/payments",
+        },
+        {
+          title: "Ajuda",
+          url: "",
+        },
+        {
+          title: "Configurações",
+          url: "",
+        },
+        {
+          title: "Sair",
+          url: "/tela-login",
+        }
+      ];
+  }
 }
