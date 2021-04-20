@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-grid>
+      <ion-row>
+        <h4>
+        <ion-icon routerLink="/tela-login" name="arrow-back-outline"></ion-icon>
+      </h4>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-title>
+        Criar conta
+      </ion-title>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <br>
+  <strong>
+    <ion-text class="ion-padding">Dados pessoais</ion-text>
+  </strong>
+
+  <br>
+  <br>
+  <ion-item>
+    <ion-text>Nome</ion-text>
+    <ion-label color="medium" position="floating">digite seu nome</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Sobrenome</ion-text>
+    <ion-label color="medium" position="floating">digite seu sobrenome</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>CPF</ion-text>
+    <ion-label color="medium" position="floating">apenas números</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <strong>
+    <ion-text class="ion-padding">Contato</ion-text>
+  </strong>
+
+  <br>
+  <br>
+  <ion-item>
+    <ion-text>Celular</ion-text>
+    <ion-label color="medium" position="floating">digite o DDD + celular</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>E-mail</ion-text>
+    <ion-label color="medium" position="floating">digite seu e-mail</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <strong>
+    <ion-text class="ion-padding">Criar senha</ion-text>
+  </strong>
+
+  <br>
+  <br>
+  <ion-text class="ion-padding">Sua senha precisa ter de 6 a 10 </ion-text>
+  <ion-text class="ion-padding">caracteres, com letra maiúscula, </ion-text>
+  <ion-text class="ion-padding">minúscula e número </ion-text>
+
+  <br>
+  <br>
+  <ion-item>
+    <ion-text>Senha (somente letras e números)</ion-text>
+    <ion-label color="medium" position="floating">utilize de 6 a 10 caracteres</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Confirmação da senha</ion-text>
+    <ion-label color="medium" position="floating">confirme sua senha</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-text class="ion-padding"><ion-checkbox></ion-checkbox> Li e estou de acordo com os </ion-text>
+  <ion-text class="ion-padding">termos de uso e a politica de </ion-text>
+  <ion-text class="ion-padding"> privacidade</ion-text>
+
+  <br>
+  <br>
+  <ion-button color="warning" expand="block">PRONTO</ion-button>
+  <br>
+
+</ion-content>
