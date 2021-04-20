@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TelaLoginPage } from './tela-login/tela-login.page';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  rootPage:any = "tela-login";
+  rootPage:any = "TelaLoginPage";
 
   constructor() {}
 }
