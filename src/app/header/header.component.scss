@@ -1,9 +1,15 @@
+@import '../../theme/variables';
+
 .new-background-color {
-    --background: #79682c;
+    --background: none;
+    background-color: $header-background-color;
 }
 .font {
-    --color: #FFFFFF;
+    --color: none;
+    font-family: $font-text;
+    font-size: $font-size-header-title;
+    color: $font-header-text-color;
 }
-.div-col {
-    vertical-align: middle;
+.header-row {
+    align-items: center;
 }

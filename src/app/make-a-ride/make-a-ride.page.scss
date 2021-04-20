@@ -1,0 +1,34 @@
+@import '../../theme/variables';
+
+.pageTitle {
+    justify-content: center;
+    font-family: $font-text;
+    color: $font-title-text-color;
+    font-size: $font-size-page-title;
+    padding: 10px;
+}
+.pageSubTitle {
+    justify-content: center;
+    font-family: $font-text;
+    color: $font-title-text-color;
+    font-size: $font-size-page-subtitle;
+    padding: 10px;
+}
+.button {
+    --background: none;
+    background-color: $header-background-color;
+    font-family: $font-text;
+}
+.new-background-color {
+    --background: none;
+    background-color: $header-background-color;
+}
+.font {
+    --color: none;
+    font-family: $font-text;
+    font-size: $font-size-header-title;
+    color: $font-header-text-color;
+}
+.header-row {
+    align-items: center;
+}

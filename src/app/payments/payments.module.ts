@@ -8,6 +8,7 @@ import { PaymentsPageRoutingModule } from './payments-routing.module';
 
 import { PaymentsPage } from './payments.page';
 import { HeaderComponent } from '../header/header.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from '../header/header.component';
   declarations: [
     PaymentsPage,
     HeaderComponent,
+    MenuComponent
   ]
 })
 export class PaymentsPageModule {}
