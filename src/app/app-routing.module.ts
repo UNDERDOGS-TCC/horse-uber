@@ -30,11 +30,7 @@ const routes: Routes = [
   {
     path: 'your-trips',
     loadChildren: () => import('./your-trips/your-trips.module').then( m => m.YourTripsPageModule)
-  },  {
-    path: 'menu-hamb',
-    loadChildren: () => import('./menu-hamb/menu-hamb.module').then( m => m.MenuHambPageModule)
   },
-
 
 ];
 
