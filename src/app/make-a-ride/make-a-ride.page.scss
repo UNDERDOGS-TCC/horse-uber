@@ -37,3 +37,17 @@
 .header-row {
   align-items: center;
 }
+
+.ios,
+.md {
+  make-a-ride-page {
+    .scroll-content {
+      height: 100%;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
