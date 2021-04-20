@@ -15,3 +15,12 @@
 ion-label {
     font-family: $font-text !important;
 }
+.new-body-color{
+  --background: White;
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

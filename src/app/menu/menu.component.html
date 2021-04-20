@@ -1,29 +1,29 @@
-<ion-menu side="start" menuId="menu" contentId="main">
-  <ion-content>
-    <div class="padding-avatar">
-      <ion-item>
-        <ion-avatar class="item-avatar" slot="end">
-          <img src="https://avatars.githubusercontent.com/u/44242141?v=4">
-        </ion-avatar>
-        <ion-label>
-          <h2><b>Guilherme Santos</b></h2>
-          <h3>
-            <b>5.00</b>
-            <ion-icon name="star-sharp"></ion-icon>
-          </h3>
-        </ion-label>
-      </ion-item>
-    </div>
+<ion-menu side="start" menuId="menu" contentId="content">
+  <ion-content class="new-body-color" mode="md">
+    <ion-list lines="none" mode="ios">
+      <div class="padding-avatar">
+        <ion-item>
+          <ion-avatar class="item-avatar" slot="start">
+            <img src="https://avatars.githubusercontent.com/u/44242141?v=4">
+          </ion-avatar>
+          <ion-label>
+            <h2><b>Guilherme Santos</b></h2>
+            <h3>
+              <b>5.00</b>
+              <ion-icon name="star-sharp"></ion-icon>
+            </h3>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-list>
 
-    <ion-list *ngFor="let page of pages" mode="ios">
-      <ion-menu-toggle>
+    <ion-list lines="full" *ngFor="let pages of navigate">
+      <ion-menu-toggle auto-hide="true">
         <ion-item [routerLink]="pages.url" routerDirection="root">
           {{pages.title}}
         </ion-item>
       </ion-menu-toggle>
     </ion-list>
-
   </ion-content>
 </ion-menu>
-
-<ion-router-outlet id="main"></ion-router-outlet>
+<ion-router-outlet id="content" main></ion-router-outlet>

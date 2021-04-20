@@ -7,14 +7,14 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  pages: any;
+  /*navigate: any;
 
-  constructor(private menu: MenuController) {
-    this.Hamburguer();
+  constructor() {
+    this.sideMenu();
   }
 
-  Hamburguer() {
-    this.pages =
+  sideMenu() {
+    this.navigate =
       [
         {
           title: "Mensagens",
@@ -43,7 +43,48 @@ export class MenuComponent {
         {
           title: "Sair",
           url: "/tela-login",
-        }
-      ];
+        },
+      ]
+  }*/
+
+  navigate : any;
+  constructor(private menu: MenuController)
+  {
+    this.sideMenu();
+  }
+
+  sideMenu()
+  {
+    this.navigate =
+    [
+      {
+        title: "Mensagens",
+        url: "",
+      },
+      {
+        title: "Ganhe Dinheiro Cavalgando",
+        url: "",
+      },
+      {
+        title: "Suas Viagens",
+        url: "/your-trips",
+      },
+      {
+        title: "Pagamentos",
+        url: "/payments",
+      },
+      {
+        title: "Ajuda",
+        url: "",
+      },
+      {
+        title: "Configurações",
+        url: "",
+      },
+      {
+        title: "Sair",
+        url: "/tela-login",
+      },
+    ]
   }
 }
