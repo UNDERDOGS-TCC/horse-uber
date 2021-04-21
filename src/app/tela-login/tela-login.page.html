@@ -1,11 +1,7 @@
-<br>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="new-body-color" mode="md">
 
-  <ion-text>
-    <br>
-    <br>
-    <br>
-  </ion-text>
+  <br>
+  <br>
 
   <ion-grid>
     <ion-row>
@@ -13,13 +9,16 @@
       </ion-col>
       <ion-col>
       </ion-col>
-      <img width="200" height="80" src="https://i.imgur.com/nygok8f.png">
+      <!-- <img width="180" height="150" src="https://i.imgur.com/bQZLQxE.png"> -->
+
+      <img width="130" height="130" src="https://i.imgur.com/TCvtMco.png">
       <ion-col>
       </ion-col>
       <ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
+
 
   <ion-grid>
     <ion-row>
@@ -37,21 +36,22 @@
     </ion-row>
   </ion-grid>
 
+
   <br>
   <ion-item>
-    <ion-label position="floating">Usuario</ion-label>
+    <ion-label position="floating" color="dark">Usuario</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
   <br>
   <ion-item>
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating" color="dark">Senha</ion-label>
+    <ion-input type="password"></ion-input>
   </ion-item>
 
   <br>
   <br>
-  <ion-button color="warning" expand="block">Entrar</ion-button>
+  <ion-button expand="block" routerLink="/make-a-ride">Entrar</ion-button>
 
   <br>
   <ion-grid>

@@ -1,11 +1,10 @@
-<app-menu></app-menu>
 <app-header title="Suas Viagens"></app-header>
 
 <ion-content class="new-body-color" mode="ios">
   <ion-card class="new-body-color" mode="ios" *ngFor="let ride of rides">
     <ion-card-header>
       <ion-card-subtitle>
-        <ion-drid>
+        <ion-grid>
           <ion-col>
             <div class="div-col1">
               {{ride.ride_date}}, {{ride.ride_hour}}
@@ -16,7 +15,7 @@
               {{ ride.horse_name }}
             </div>
           </ion-col>
-        </ion-drid>
+        </ion-grid>
       </ion-card-subtitle>
     </ion-card-header>
 

@@ -1,0 +1,15 @@
+@import '../../theme/variables';
+
+.new-body-color{
+  --background: White;
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+ion-button{
+  --background: none;
+  background-color: $header-background-color;
+}

@@ -1,19 +1,12 @@
 <app-menu></app-menu>
-<ion-header class="ion-no-border" mode="md">
+<ion-header class="ion-no-border" mode="ios">
   <ion-toolbar class="new-background-color">
-    <ion-grid>
-      <ion-row class="header-row">
-        <ion-col>
-          <ion-menu-button autoHide="false" color="light">
-          </ion-menu-button>
-        </ion-col>
-        <ion-col>
-          <ion-title class="font"><b>Home</b></ion-title>
-        </ion-col>
-        <ion-col>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-buttons slot="start" mode="md">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="font">
+      <b>Home</b>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -28,4 +21,6 @@
   </ion-grid>
 
   <ion-button class="button" expand="block" mode="md">Para onde?</ion-button>
+
+  <div #map id="map"></div>
 </ion-content>

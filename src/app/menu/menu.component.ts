@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -8,11 +7,44 @@ import { MenuController } from '@ionic/angular';
 })
 export class MenuComponent {
 
-  constructor(private menu: MenuController) { }
+  pages : any;
+  constructor()
+  {
+    this.sideMenu();
+  }
 
-    openFirst() {
-      this.menu.enable(true, 'menu');
-      this.menu.open('menu');
-    }
-
+  sideMenu()
+  {
+    this.pages =
+    [
+      {
+        title: "Mensagens",
+        url: "",
+      },
+      {
+        title: "Ganhe Dinheiro Cavalgando",
+        url: "",
+      },
+      {
+        title: "Suas Viagens",
+        url: "/your-trips",
+      },
+      {
+        title: "Pagamentos",
+        url: "/payments",
+      },
+      {
+        title: "Ajuda",
+        url: "",
+      },
+      {
+        title: "Configurações",
+        url: "",
+      },
+      {
+        title: "Sair",
+        url: "/tela-login",
+      },
+    ]
+  }
 }

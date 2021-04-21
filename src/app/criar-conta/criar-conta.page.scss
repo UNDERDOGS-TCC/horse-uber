@@ -1,0 +1,30 @@
+@import '../../theme/variables';
+
+.new-body-color{
+  --background: White;
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.new-background-color {
+    --background: none;
+    background-color: $header-background-color;
+}
+.font {
+    --color: none;
+    font-family: $font-text;
+    font-size: $font-size-header-title;
+    color: $font-header-text-color;
+}
+.header-row {
+    align-items: center;
+}
+
+ion-button{
+  --background: none;
+  background-color: $header-background-color;
+}
