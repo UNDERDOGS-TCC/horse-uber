@@ -9,28 +9,3 @@
     display: none;
   }
 }
-
-.new-background-color {
-    --background: none;
-    background-color: $header-background-color;
-}
-.font {
-    --color: none;
-    font-family: $font-text;
-    font-size: $font-size-header-title;
-    color: $font-header-text-color;
-}
-.header-row {
-    align-items: center;
-}
-
-ion-button{
-  --background: none;
-  background-color: $header-background-color;
-}
-.font-body{
-  --color: none;
-  font-family: $font-text;
-  font-size: $font-size-body-title;
-  color: $font-body-text-color;
-}
