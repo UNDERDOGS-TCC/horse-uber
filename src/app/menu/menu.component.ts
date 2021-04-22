@@ -19,7 +19,7 @@ export class MenuComponent {
     [
       {
         title: "Mensagens",
-        url: "",
+        url: "/mensagens",
       },
       {
         title: "Seja Um Cavaleiro",
@@ -35,11 +35,11 @@ export class MenuComponent {
       },
       {
         title: "Ajuda",
-        url: "",
+        url: "/ajuda",
       },
       {
         title: "Configurações",
-        url: "",
+        url: "/configuracoes",
       },
       {
         title: "Sair",

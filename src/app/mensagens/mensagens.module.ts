@@ -5,8 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MensagensPageRoutingModule } from './mensagens-routing.module';
-
 import { MensagensPage } from './mensagens.page';
+
+import { HeaderComponent } from '../header/header.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { MensagensPage } from './mensagens.page';
     IonicModule,
     MensagensPageRoutingModule
   ],
-  declarations: [MensagensPage]
+  declarations: [
+    MensagensPage,
+    HeaderComponent,
+    MenuComponent
+  ]
 })
 export class MensagensPageModule {}

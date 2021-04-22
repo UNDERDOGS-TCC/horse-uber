@@ -5,8 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AjudaPageRoutingModule } from './ajuda-routing.module';
-
 import { AjudaPage } from './ajuda.page';
+
+import { HeaderComponent } from '../header/header.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { AjudaPage } from './ajuda.page';
     IonicModule,
     AjudaPageRoutingModule
   ],
-  declarations: [AjudaPage]
+  declarations: [
+    AjudaPage,
+    HeaderComponent,
+    MenuComponent
+  ]
 })
 export class AjudaPageModule {}
