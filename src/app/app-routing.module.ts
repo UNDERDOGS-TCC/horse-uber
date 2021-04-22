@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'your-trips',
     loadChildren: () => import('./your-trips/your-trips.module').then( m => m.YourTripsPageModule)
+  },  {
+    path: 'ganhe-dinheiro-cavalgando',
+    loadChildren: () => import('./ganhe-dinheiro-cavalgando/ganhe-dinheiro-cavalgando.module').then( m => m.GanheDinheiroCavalgandoPageModule)
   },
+
 
 ];
 

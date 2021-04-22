@@ -28,6 +28,9 @@ ion-button{
   --background: none;
   background-color: $header-background-color;
 }
-div{
-  margin-top: 300px;
+.font-body{
+  --color: none;
+  font-family: $font-text;
+  font-size: $font-size-body-title;
+  color: $font-body-text-color;
 }

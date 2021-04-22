@@ -22,8 +22,8 @@ export class MenuComponent {
         url: "",
       },
       {
-        title: "Ganhe Dinheiro Cavalgando",
-        url: "",
+        title: "Seja Um Cavaleiro",
+        url: "/ganhe-dinheiro-cavalgando",
       },
       {
         title: "Suas Viagens",
