@@ -38,15 +38,39 @@
   align-items: center;
 }
 
+.card-class {
+  --background: none;
+  background-color: #e5e5e5;
+  font-family: $font-text;
+  color: $font-body-text-color;
+}
+
+.card-font-size {
+  font-size: $font-size-page-subtitle;
+}
+
+.map-img {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.img-title {
+  font-family: $font-text;
+  --color: none;
+  color: $font-title-text-color;
+  font-size: $font-size-header-title;
+  padding-left: 10px;
+}
+
+#map {
+  height: 90%;
+}
+
 .ios,
 .md {
   make-a-ride-page {
     .scroll-content {
-      height: 100%;
-    }
-
-    #map {
-      width: 100%;
       height: 100%;
     }
   }

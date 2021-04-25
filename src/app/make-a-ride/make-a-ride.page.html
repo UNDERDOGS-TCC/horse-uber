@@ -20,7 +20,16 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button class="button" expand="block" mode="md">Para onde?</ion-button>
+  <ion-card mode="md" routerLink="/ride" class="card-class">
+    <ion-card-content class="card-font-size">
+        Para onde?
+    </ion-card-content>
+  </ion-card>
 
-  <div #map id="map"></div>
+  <ion-text class="img-title">Perto de você:</ion-text>
+  <div class="map-img">
+    <img src="https://i.imgur.com/6Pz9lWH.png">
+  </div>
+
+  <!-- <div #map id="map"></div> -->
 </ion-content>
