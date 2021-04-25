@@ -42,10 +42,6 @@ export class MenuComponent {
         url: "/configuracoes",
       },
       {
-        title: "Ride",
-        url: "/ride",
-      },
-      {
         title: "Sair",
         url: "/tela-login",
       },

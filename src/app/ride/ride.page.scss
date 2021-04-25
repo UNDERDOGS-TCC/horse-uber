@@ -1,8 +1,5 @@
 @import '../../theme/variables';
 
-p{
-  margin-top: 10px;
-}
 .new-background-color{
     --background: #79682C ;
 }
@@ -15,18 +12,11 @@ p{
     display: none;
   }
 }
-ion-col {
-  text-align: right;
+.map-img {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.div-col{
-  float: right;
-  text-align: right;
-  font-weight: bold;
-}
-.div-col1{
-  display: inline;
-}
-#Valor-corrida{
-  font-size: 12px;
-  font-weight: bold;
+ion-input {
+  font-size: $font-size-page-subtitle;
 }
