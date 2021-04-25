@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriarContaPage implements OnInit {
 
+  account: any;
+
   constructor() { }
 
   ngOnInit() {

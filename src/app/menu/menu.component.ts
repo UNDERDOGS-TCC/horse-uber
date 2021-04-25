@@ -19,11 +19,11 @@ export class MenuComponent {
     [
       {
         title: "Mensagens",
-        url: "",
+        url: "/mensagens",
       },
       {
-        title: "Ganhe Dinheiro Cavalgando",
-        url: "",
+        title: "Seja Um Cavaleiro",
+        url: "/ganhe-dinheiro-cavalgando",
       },
       {
         title: "Suas Viagens",
@@ -35,11 +35,11 @@ export class MenuComponent {
       },
       {
         title: "Ajuda",
-        url: "",
+        url: "/ajuda",
       },
       {
         title: "Configurações",
-        url: "",
+        url: "/configuracoes",
       },
       {
         title: "Sair",
