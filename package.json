@@ -30,6 +30,7 @@
     "@ionic-native/network": "^5.32.1",
     "@ionic-native/status-bar": "^5.32.0",
     "@ionic/angular": "^5.6.4",
+    "@ionic/cli": "^6.13.1",
     "@types/mongoose": "^5.10.5",
     "cordova": "^10.0.0",
     "cordova-android": "9.1.0",
