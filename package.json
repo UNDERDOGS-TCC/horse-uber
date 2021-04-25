@@ -33,6 +33,7 @@
     "@types/mongoose": "^5.10.5",
     "cordova": "^10.0.0",
     "cordova-android": "9.1.0",
+    "cordova-ios": "6.2.0",
     "cordova-plugin-googlemaps": "^2.7.1",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-statusbar": "^2.4.3",
@@ -79,11 +80,14 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
