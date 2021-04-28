@@ -7,6 +7,7 @@ import { Platform } from '@ionic/angular';
   templateUrl: './make-a-ride.page.html',
   styleUrls: ['./make-a-ride.page.scss'],
 })
+
 export class MakeARidePage implements OnInit {
   map: GoogleMap;
   constructor(private platform: Platform) { }
