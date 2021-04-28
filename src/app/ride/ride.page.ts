@@ -14,12 +14,12 @@ export class RidePage implements OnInit {
 
   ngAfterViewInit() {
     this.platform.ready().then(() => {
-      this.loadMap();
     });
   }
 
   async ngOnInit() {
     await this.platform.ready();
+    this.loadMap();
   }
 
   loadMap() {
