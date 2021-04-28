@@ -9,11 +9,16 @@ import { Platform } from '@ionic/angular';
 })
 export class MakeARidePage implements OnInit {
   map: GoogleMap;
-  constructor(private platform: Platform) {}
+  constructor(private platform: Platform) { }
+
+  ngAfterViewInit() {
+    this.platform.ready().then(() => {
+      this.loadMap();
+    });
+  }
 
   async ngOnInit() {
     await this.platform.ready();
-    await this.loadMap();
   }
 
   loadMap() {
@@ -25,13 +30,13 @@ export class MakeARidePage implements OnInit {
 
     let mapOptions: GoogleMapOptions = {
       camera: {
-         target: {
-           lat: 43.0741904,
-           lng: -89.3809802
-         },
-         zoom: 18,
-         tilt: 30
-       }
+        target: {
+          lat: 43.0741904,
+          lng: -89.3809802
+        },
+        zoom: 18,
+        tilt: 30
+      }
     };
 
     this.map = GoogleMaps.create('map', mapOptions);
