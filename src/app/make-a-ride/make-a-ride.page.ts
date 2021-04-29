@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap, GoogleMaps, Marker, GoogleMapOptions, GoogleMapsEvent, Environment } from '@ionic-native/google-maps';
+import { Component, OnInit } from '@angular/core';
+import { GoogleMap, GoogleMaps, GoogleMapOptions, GoogleMapsEvent, Environment, GoogleMapsAnimation } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -9,20 +10,16 @@ import { Platform } from '@ionic/angular';
 })
 
 export class MakeARidePage implements OnInit {
+  [x: string]: any;
   map: GoogleMap;
-  constructor(private platform: Platform) { }
-
-  ngAfterViewInit() {
-    this.platform.ready().then(() => {
-    });
-  }
+  constructor(private platform: Platform, private geolocation: Geolocation) { }
 
   async ngOnInit() {
     await this.platform.ready();
     this.loadMap();
   }
 
-  loadMap() {
+  async loadMap() {
 
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBykKVB2RUB2ZbdcBz8d2Ooa6dyuyER9OM',
@@ -30,29 +27,51 @@ export class MakeARidePage implements OnInit {
     });
 
     let mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: 43.0741904,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
+      controls: {
+        zoom: false
       }
     };
 
     this.map = GoogleMaps.create('map', mapOptions);
 
-    let marker: Marker = this.map.addMarkerSync({
-      title: 'Ionic',
-      icon: 'blue',
-      animation: 'DROP',
-      position: {
-        lat: 43.0741904,
-        lng: -89.3809802
-      }
-    });
-    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-      alert('clicked');
-    });
+    try {
+      await this.map.one(GoogleMapsEvent.MAP_READY);
+
+      this.addOriginMarker();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async addOriginMarker() {
+
+    try {
+      await this.geolocation.getCurrentPosition({
+        maximumAge: 1000, timeout: 5000,
+        enableHighAccuracy: true
+      }).then((localizacao) => {
+        this.minhaLatitude = localizacao.coords.latitude;
+        this.minhaLongitude = localizacao.coords.longitude;
+      });
+
+      await this.map.moveCamera({
+        target: {
+          lat: this.minhaLatitude,
+          lng: this.minhaLongitude
+        },
+        zoom: 18
+      });
+
+      this.map.addMarkerSync({
+        title: 'Você',
+        icon: '#ADA388',
+        animation: GoogleMapsAnimation.DROP,
+        position: {
+          lat: this.minhaLatitude,
+          lng: this.minhaLongitude
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

@@ -1,8 +1,6 @@
 @import '../../theme/variables';
 
-.new-background-color{
-    --background: #79682C ;
-}
+
 .new-body-color{
   --background: White;
   --offset-bottom: auto!important;
@@ -12,16 +10,23 @@
     display: none;
   }
 }
-.map-img {
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
 ion-input {
   font-size: $font-size-page-subtitle;
 }
 
-#map {
-  height: 500px;
-  width: 500px;
+#map{
+  min-width: 100px;
+  min-height: 100px;
+
+  height: 90%;
+  margin: 10px 5px 10px 5px;
+  border-width: 0.5px;
+  border-style: solid;
+  border-radius: 1%;
+  border-color: $header-background-color;
+}
+
+ion-button{
+  --background: none;
+  background-color: $header-background-color;
 }
