@@ -16,11 +16,12 @@
   padding: 10px;
 }
 
-.new-body-color{
+.new-body-color {
   --background: White;
   --offset-bottom: auto!important;
   --overflow: hidden;
   overflow: auto;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -73,6 +74,14 @@
   padding-left: 10px;
 }
 
-#map {
-  height: 90%;
+#map{
+  min-width: 100px;
+  min-height: 100px;
+
+  height: 59vh;
+  margin: 10px 5px 10px 5px;
+  border-width: 0.5px;
+  border-style: solid;
+  border-radius: 1%;
+  border-color: $header-background-color;
 }
