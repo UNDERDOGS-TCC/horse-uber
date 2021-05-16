@@ -2,8 +2,14 @@
 
 <ion-content [fullscreen]="true" class="new-body-color" mode="md">
 
-  <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="searchChanged()" placeholder="Onde você está?"></ion-searchbar>
-  <ion-searchbar  [(ngModel)]="toGoLocation" (ionChange)="searchChanged()" placeholder="Para onde você vai?"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="Onde você está?"></ion-searchbar>
+  <ion-list [hidden]="!actualLocation.length" >
+    <ion-item *ngFor="let r of searchResults">
+      {{ r.description }}
+    </ion-item>
+  </ion-list>
+
+  <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="searchChanged()" placeholder="Para onde você vai?"></ion-searchbar>
 
   <div class="button-div">
     <ion-button class="button" (click)="searchChanged()" expand="block">Confirmar</ion-button>

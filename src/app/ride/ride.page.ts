@@ -3,6 +3,8 @@ import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsAnimati
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
 
+declare var google: any;
+
 @Component({
   selector: 'app-ride',
   templateUrl: './ride.page.html',
@@ -14,8 +16,10 @@ export class RidePage implements OnInit {
   map: GoogleMap;
   public actualLocation: string = '';
   public toGoLocation: string = '';
+  private autoComplete = new google.maps.places.AutocompleteService();
+  public searchResults = new Array<any>();
 
-  constructor(private platform: Platform, private geolocation: Geolocation) { }
+  constructor(private platform: Platform, private geolocation: Geolocation) {}
 
   async ngOnInit() {
     await this.platform.ready();
@@ -39,7 +43,6 @@ export class RidePage implements OnInit {
 
     try {
       await this.map.one(GoogleMapsEvent.MAP_READY);
-
       this.addOriginMarker();
     } catch (error) {
       console.log(error);
@@ -79,8 +82,12 @@ export class RidePage implements OnInit {
     }
   }
 
-  searchChanged(){
-    console.log(this.actualLocation)
+  actualLocationChanged(){
+    if (!this.actualLocation.trim().length) return;
+
+    this.autoComplete.getPlacePredictions({ input: this.actualLocation }, predictions =>{
+      this.searchResults = predictions;
+    });
   }
 
 }
