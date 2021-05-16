@@ -1,19 +1,13 @@
 <app-header title="Viagem"></app-header>
 
-<ion-content class="new-body-color" mode="ios">
+<ion-content [fullscreen]="true" class="new-body-color" mode="md">
 
-  <ion-card mode="md">
-    <ion-card-content>
-      <ion-input color="dark" placeholder="Onde você está?"></ion-input>
-    </ion-card-content>
-  </ion-card>
+  <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="searchChanged()" placeholder="Onde você está?"></ion-searchbar>
+  <ion-searchbar  [(ngModel)]="toGoLocation" (ionChange)="searchChanged()" placeholder="Para onde você vai?"></ion-searchbar>
 
-  <ion-card mode="md">
-    <ion-card-content>
-      <ion-input color="dark" placeholder="Para onde você vai?"></ion-input>
-    </ion-card-content>
-  </ion-card>
-  <ion-button expand="block" slot="end">Confirmar</ion-button>
-  <div #map id="map">
+  <div class="button-div">
+    <ion-button class="button" (click)="searchChanged()" expand="block">Confirmar</ion-button>
   </div>
+
+  <div #map id="map"></div>
 </ion-content>

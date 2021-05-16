@@ -12,6 +12,9 @@ export class RidePage implements OnInit {
 
   [x: string]: any;
   map: GoogleMap;
+  public actualLocation: string = '';
+  public toGoLocation: string = '';
+
   constructor(private platform: Platform, private geolocation: Geolocation) { }
 
   async ngOnInit() {
@@ -74,6 +77,10 @@ export class RidePage implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  searchChanged(){
+    console.log(this.actualLocation)
   }
 
 }
