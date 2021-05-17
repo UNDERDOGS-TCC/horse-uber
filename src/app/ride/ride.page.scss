@@ -1,6 +1,5 @@
 @import '../../theme/variables';
 
-
 .new-body-color{
   --background: White;
   --offset-bottom: auto!important;
@@ -10,8 +9,9 @@
     display: none;
   }
 }
-ion-input {
-  font-size: $font-size-page-subtitle;
+ion-searchbar {
+  font-size: $font-size-page-subtitle - 3px;
+  --color: $font-body-text-color;
 }
 
 #map{
@@ -25,7 +25,17 @@ ion-input {
   border-radius: 1%;
   border-color: $header-background-color;
 }
-ion-button{
+.button{
   --background: none;
   background-color: $header-background-color;
+  --border-radius: 1%;
+}
+.button-div{
+  margin: 7px 7px 7px 7px;
+}
+ion-list{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+ion-item{
+  --border-color: #cccccc;
 }

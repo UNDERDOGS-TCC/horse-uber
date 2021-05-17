@@ -32,6 +32,7 @@
     "@ionic/angular": "^5.6.4",
     "@ionic/cli": "^6.13.1",
     "@types/mongoose": "^5.10.5",
+    "brower": "0.0.2",
     "cordova": "^10.0.0",
     "cordova-android": "9.1.0",
     "cordova-browser": "^6.0.0",
