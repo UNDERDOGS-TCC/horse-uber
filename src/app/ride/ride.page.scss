@@ -33,3 +33,9 @@ ion-searchbar {
 .button-div{
   margin: 7px 7px 7px 7px;
 }
+ion-list{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+ion-item{
+  --border-color: #cccccc;
+}

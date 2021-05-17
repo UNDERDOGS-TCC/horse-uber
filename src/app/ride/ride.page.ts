@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Environment, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsAnimation, GoogleMapsEvent } from '@ionic-native/google-maps';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Environment, Geocoder, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsAnimation, GoogleMapsEvent, ILatLng, Marker, Polyline } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
 
@@ -17,9 +17,19 @@ export class RidePage implements OnInit {
   public actualLocation: string = '';
   public toGoLocation: string = '';
   private autoComplete = new google.maps.places.AutocompleteService();
-  public searchResults = new Array<any>();
+  public searchResultsActual = new Array<any>();
+  public searchResultsToGo = new Array<any>();
+  public actualClicked: string = 'Onde você está?';
+  public toGoClicked: string = 'Para Onde você vai?';
+  private originMarker: Marker;
+  public line: Polyline;
+  private markerDestination: Marker;
+  public localizacaoInicial: Array<ILatLng>;
+  public destination: any;
+  public removeLine: boolean = false;
+  private googleDirectionService = new google.maps.DirectionsService();
 
-  constructor(private platform: Platform, private geolocation: Geolocation) {}
+  constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone) { }
 
   async ngOnInit() {
     await this.platform.ready();
@@ -58,6 +68,10 @@ export class RidePage implements OnInit {
       }).then((localizacao) => {
         this.minhaLatitude = localizacao.coords.latitude;
         this.minhaLongitude = localizacao.coords.longitude;
+        this.localizacaoInicial[0] = {
+          lat: localizacao.coords.latitude,
+          lng: localizacao.coords.longitude
+        };
       });
 
       await this.map.moveCamera({
@@ -68,7 +82,7 @@ export class RidePage implements OnInit {
         zoom: 18
       });
 
-      this.map.addMarkerSync({
+      this.originMarker = this.map.addMarkerSync({
         title: 'Você',
         icon: '#ADA388',
         animation: GoogleMapsAnimation.DROP,
@@ -77,17 +91,105 @@ export class RidePage implements OnInit {
           lng: this.minhaLongitude
         }
       });
+
+      //const initialInfo: any = await Geocoder.geocode({ location:  this.localizacaoInicial[0] })
+
     } catch (error) {
       console.log(error);
     }
   }
 
-  actualLocationChanged(){
+  actualLocationChanged() {
     if (!this.actualLocation.trim().length) return;
 
-    this.autoComplete.getPlacePredictions({ input: this.actualLocation }, predictions =>{
-      this.searchResults = predictions;
+    this.autoComplete.getPlacePredictions({ input: this.actualLocation }, predictions => {
+      this.ngZone.run(() => {
+        this.searchResultsActual = predictions;
+      });
     });
+  }
+
+  async selectActualPoint(item: any) {
+    this.actualLocation = '';
+    this.actualClicked = item.description;
+
+    const actualInfo: any = await Geocoder.geocode({ address: item.description })
+
+    this.originMarker.setPosition(actualInfo[0].position)
+
+    await this.map.moveCamera({
+      target: {
+        lat: actualInfo[0].position.lat,
+        lng: actualInfo[0].position.lng
+      },
+      zoom: 18
+    });
+  }
+
+  toGoLocationChanged() {
+
+    if (this.removeLine == true){
+      this.line.remove();
+    }
+
+    if (!this.toGoLocation.trim().length) return;
+    this.autoComplete.getPlacePredictions({ input: this.toGoLocation }, predictions => {
+      this.ngZone.run(() => {
+        this.searchResultsToGo = predictions;
+      });
+    });
+  }
+
+  async selectToGoPoint(item: any) {
+
+    this.toGoLocation = '';
+    this.toGoClicked = item.description;
+
+    this.destination = item;
+
+    const info: any = await Geocoder.geocode({ address: this.destination.description })
+
+    if (this.markerDestination == null) {
+      this.markerDestination = this.map.addMarkerSync({
+        title: this.destination.description,
+        icon: '#ADA388',
+        animation: GoogleMapsAnimation.DROP,
+        position: info[0].position
+      });
+    } else {
+      this.markerDestination.setPosition(info[0].position);
+    }
+
+    this.googleDirectionService.route({
+      origin: this.originMarker.getPosition(),
+      destination: this.markerDestination.getPosition(),
+      travelMode: 'DRIVING'
+    }, async results =>{
+      const points = new Array<ILatLng>();
+      const routes = results.routes[0].overview_path;
+      for(let i = 0; i < routes.length; i++){
+        points[i] = {
+          lat: routes[i].lat(),
+          lng: routes[i].lng()
+        }
+      }
+
+      this.line = await this.map.addPolyline({
+        points: points,
+        color: '#ADA388',
+        width: 3
+      });
+      this.removeLine = true;
+
+      this.map.moveCamera({
+        target: points
+      });
+    });
+
+  }
+
+  calcularRota(){
+
   }
 
 }

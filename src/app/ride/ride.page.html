@@ -2,17 +2,22 @@
 
 <ion-content [fullscreen]="true" class="new-body-color" mode="md">
 
-  <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="Onde você está?"></ion-searchbar>
-  <ion-list [hidden]="!actualLocation.length" >
-    <ion-item *ngFor="let r of searchResults">
+  <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}"></ion-searchbar>
+  <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!actualLocation.length"  >
+    <ion-item (click)="selectActualPoint(r)" *ngFor="let r of searchResultsActual">
       {{ r.description }}
     </ion-item>
   </ion-list>
 
-  <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="searchChanged()" placeholder="Para onde você vai?"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}"></ion-searchbar>
+  <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!toGoLocation.length"  >
+    <ion-item (click)="selectToGoPoint(results)" *ngFor="let results of searchResultsToGo">
+      {{ results.description }}
+    </ion-item>
+  </ion-list>
 
   <div class="button-div">
-    <ion-button class="button" (click)="searchChanged()" expand="block">Confirmar</ion-button>
+    <ion-button class="button" (click)="calcularRota()" expand="block">Confirmar</ion-button>
   </div>
 
   <div #map id="map"></div>
