@@ -24,10 +24,10 @@ export class RidePage implements OnInit {
   private originMarker: Marker;
   public line: Polyline;
   private markerDestination: Marker;
-  public localizacaoInicial: Array<ILatLng>;
   public destination: any;
   public removeLine: boolean = false;
   private googleDirectionService = new google.maps.DirectionsService();
+  private geocoder = new google.maps.Geocoder();
 
   constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone) { }
 
@@ -68,10 +68,6 @@ export class RidePage implements OnInit {
       }).then((localizacao) => {
         this.minhaLatitude = localizacao.coords.latitude;
         this.minhaLongitude = localizacao.coords.longitude;
-        this.localizacaoInicial[0] = {
-          lat: localizacao.coords.latitude,
-          lng: localizacao.coords.longitude
-        };
       });
 
       await this.map.moveCamera({
@@ -92,7 +88,12 @@ export class RidePage implements OnInit {
         }
       });
 
-      //const initialInfo: any = await Geocoder.geocode({ location:  this.localizacaoInicial[0] })
+      const g: any = await Geocoder.geocode({ position : {
+        lat: this.minhaLatitude,
+        lng: this.minhaLongitude
+       }});
+
+      this.actualClicked = g[0].extra.lines;
 
     } catch (error) {
       console.log(error);
@@ -114,8 +115,36 @@ export class RidePage implements OnInit {
     this.actualClicked = item.description;
 
     const actualInfo: any = await Geocoder.geocode({ address: item.description })
-
     this.originMarker.setPosition(actualInfo[0].position)
+
+    if (this.removeLine == true){
+      this.line.remove();
+
+      this.googleDirectionService.route({
+        origin: this.originMarker.getPosition(),
+        destination: this.markerDestination.getPosition(),
+        travelMode: 'DRIVING'
+      }, async results =>{
+        const points = new Array<ILatLng>();
+        const routes = results.routes[0].overview_path;
+        for(let i = 0; i < routes.length; i++){
+          points[i] = {
+            lat: routes[i].lat(),
+            lng: routes[i].lng()
+          }
+        }
+
+        this.line = await this.map.addPolyline({
+          points: points,
+          color: '#ADA388',
+          width: 3
+        });
+
+        this.map.moveCamera({
+          target: points
+        });
+      });
+    }
 
     await this.map.moveCamera({
       target: {
