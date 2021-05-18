@@ -40,18 +40,18 @@
   <br>
   <ion-item>
     <ion-label position="floating" color="dark">Usuario</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userLogin.email"></ion-input>
   </ion-item>
 
   <br>
   <ion-item>
     <ion-label position="floating" color="dark">Senha</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" [(ngModel)]="userLogin.password"></ion-input>
   </ion-item>
 
   <br>
   <br>
-  <ion-button class="login-button" expand="block" routerLink="/make-a-ride">Entrar</ion-button>
+  <ion-button class="login-button" expand="block" (click)="login()">Entrar</ion-button>
 
   <br>
   <ion-grid>

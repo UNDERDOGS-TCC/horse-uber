@@ -49,7 +49,7 @@
   <ion-item>
     <ion-text>E-mail</ion-text>
     <ion-label color="medium" position="floating">digite seu e-mail</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userRegister.email"></ion-input>
   </ion-item>
 
   <br>
@@ -62,24 +62,11 @@
   <ion-item>
     <ion-text>Senha (somente letras e números)</ion-text>
     <ion-label color="medium" position="floating">utilize de 6 a 10 caracteres</ion-label>
-    <ion-input></ion-input>
+    <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
   </ion-item>
 
   <br>
-  <ion-item>
-    <ion-text>Confirmação da senha</ion-text>
-    <ion-label color="medium" position="floating">confirme sua senha</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-
-  <!--<br>
-  <ion-text class="ion-padding"> <ion-checkbox> </ion-checkbox> Li e estou de acordo com os </ion-text>
-  <ion-text class="ion-padding">termos de uso e a politica de </ion-text>
-  <ion-text class="ion-padding"> privacidade</ion-text> -->
-
-  <br>
-  <br>
-  <ion-button class="ion-default-button" expand="block">PRONTO</ion-button>
+  <ion-button class="ion-default-button" expand="block" (click)="register()">PRONTO</ion-button>
   <br>
 
 </ion-content>
