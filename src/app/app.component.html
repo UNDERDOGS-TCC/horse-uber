@@ -1,3 +1,56 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+  <ion-menu menuId="main-menu" contentId="content">
+      
+    <strong>
+    <ion-item>
+      <ion-avatar class="item-avatar" slot="start">
+        <img src="https://avatars.githubusercontent.com/u/51248056?s=400&u=6270dd02a70b3fda313059670d9002bb5f74b370&v=4">
+      </ion-avatar>
+      <ion-label>
+        <h2><b>Kyky, do you love me?</b></h2>
+        <h3>
+          <b>5.00</b>
+          <ion-icon name="star-sharp"></ion-icon>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </strong>
+  
+      <ion-content>
+        <ion-menu-toggle>
+        <ion-list>
+          <ion-item>
+            <ion-icon color="dark" name="document-text-outline" slot="start"></ion-icon>
+            <ion-label routerLink="/viagens">Mensagens</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon color="dark" name="locate-outline" slot="start"></ion-icon>
+            <ion-label routerLink="/viagens">Seja um cavaleiro</ion-label>
+          </ion-item>
+            <ion-item>
+              <ion-icon color="dark" name="location-outline" slot="start"></ion-icon>
+              <ion-label routerLink="/viagens">Suas Viagens</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon color="dark" name="cash-outline" slot="start"></ion-icon>
+              <ion-label>Pagamento</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon color="dark" name="help-outline" slot="start"></ion-icon>
+              <ion-label routerLink="/viagens">Ajuda</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon color="dark" name="settings-outline" slot="start"></ion-icon>
+              <ion-label routerLink="/viagens">Configuração</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon color="dark" name="exit-outline" slot="start"></ion-icon>
+              <ion-label (click)="logout()">Sair</ion-label>
+            </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+  
+    <ion-router-outlet id="content" main></ion-router-outlet>
+  </ion-app>

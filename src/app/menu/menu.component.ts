@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,43 +9,7 @@ import { Component } from '@angular/core';
 export class MenuComponent {
 
   pages : any;
-  constructor()
-  {
-    this.sideMenu();
-  }
-
-  sideMenu()
-  {
-    this.pages =
-    [
-      {
-        title: "Mensagens",
-        url: "/mensagens",
-      },
-      {
-        title: "Seja Um Cavaleiro",
-        url: "/ganhe-dinheiro-cavalgando",
-      },
-      {
-        title: "Suas Viagens",
-        url: "/your-trips",
-      },
-      {
-        title: "Pagamentos",
-        url: "/payments",
-      },
-      {
-        title: "Ajuda",
-        url: "/ajuda",
-      },
-      {
-        title: "Configurações",
-        url: "/configuracoes",
-      },
-      {
-        title: "Sair",
-        url: "/tela-login",
-      },
-    ]
-  }
+  constructor(private authService: AuthService) { }
+ 
 }
+
