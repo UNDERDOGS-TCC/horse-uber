@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { User } from '../interfaces/user';
-import { AuthService } from '../services/auth.service';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -26,6 +26,7 @@ export class TelaLoginPage implements OnInit {
     }finally{
       this.loading.dismiss();
     }
+    console.log((await this.authService.getAuth().currentUser).uid);
   }
 
   async presentLoading(){

@@ -218,7 +218,7 @@ export class RidePage implements OnInit {
   }
 
   calcularRota(){
-
+    
   }
 
 }
