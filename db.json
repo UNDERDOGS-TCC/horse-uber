@@ -1,0 +1,12 @@
+{"rides":[
+    {
+    "id": "1",
+    "uid": "LSAMD9Niw0NaP0vc5TCrfs7H9Ob2",
+    "ride_date":"31/03/2021",
+    "ride_hour":"15:16",
+    "horse_name":"Cavalinho",
+    "origin_ride":"Avenida Eliseu de Almeida, 747",
+    "destination_ride":"Rua quitanduba, 380",
+    "ride_value":"R$ 23,89"
+    }
+]}
