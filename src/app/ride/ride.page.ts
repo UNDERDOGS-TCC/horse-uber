@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Environment, Geocoder, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsAnimation, GoogleMapsEvent, ILatLng, Marker, Polyline } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 declare var google: any;
 
@@ -29,7 +31,7 @@ export class RidePage implements OnInit {
   private googleDirectionService = new google.maps.DirectionsService();
   private geocoder = new google.maps.Geocoder();
 
-  constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone) { }
+  constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone, private http: HttpClient) { }
 
   async ngOnInit() {
     await this.platform.ready();
@@ -218,7 +220,7 @@ export class RidePage implements OnInit {
   }
 
   calcularRota(){
-    
+    console.log(this.http.request('GET', `${environment.ibm_cos.endpoints}/${environment.ibm_cos.bucket}/${environment.ibm_cos.object}`));
   }
 
 }
