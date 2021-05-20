@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class CriarContaPage implements OnInit {
   public userRegister: User = {};
+  public name; public lastName;
   private loading: any;
 
   constructor(private loadingController: LoadingController, private toastController: ToastController, private authService: AuthService) { }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,8 @@ import { AuthService } from '../services/auth.service';
 export class MenuComponent {
 
   pages : any;
+  userName: any = firebase.default.auth().currentUser.displayName;
+
   constructor(private authService: AuthService)
   {
     this.sideMenu();

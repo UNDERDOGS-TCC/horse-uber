@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../interfaces/user';
+import * as firebase from 'firebase';
+import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
 
 @Injectable({
   providedIn: 'root'

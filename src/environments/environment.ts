@@ -7,6 +7,7 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyD9jbjSYVnKgv2DZ5u-pjhU-67U8T5R358",
     authDomain: "uberhorse-c5ddf.firebaseapp.com",
+    databaseURL: "https://uberhorse-c5ddf-default-rtdb.firebaseio.com",
     projectId: "uberhorse-c5ddf",
     storageBucket: "uberhorse-c5ddf.appspot.com",
     messagingSenderId: "271139498718",
