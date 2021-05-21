@@ -264,10 +264,11 @@ export class RidePage implements OnInit {
     });
 
     if (parseFloat(this.userBalanceRide) >= 25) {
-      this.userBalanceRide = (parseFloat(this.userBalanceRide) - 25).toFixed(2).toString();
-      this.userBalanceRide = this.userBalanceRide.replace('.', ',');
-      this.userStarsRide = (parseFloat(this.userStarsRide) + 0.5).toFixed(2).toString();
       if (this.removeLine === true) {
+        this.userBalanceRide = (parseFloat(this.userBalanceRide) - 25).toFixed(2).toString();
+        this.userBalanceRide = this.userBalanceRide.replace('.', ',');
+        this.userStarsRide = (parseFloat(this.userStarsRide) + 0.5).toFixed(2).toString();
+
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0');
