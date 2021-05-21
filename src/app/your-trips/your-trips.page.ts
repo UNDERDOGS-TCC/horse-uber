@@ -16,19 +16,27 @@ export class YourTripsPage implements OnInit {
   getData(){
     const userID = firebase.default.auth().currentUser.uid;
     const ourDataBase = firebase.default.database().ref('rides');
-    ourDataBase.get().then((allRides) => {
-      if (allRides.exists()) {
-        console.log(allRides.val()[4]);
-        //console.log(x.filter(r=> r.uid === userID));
 
-        //this.rides = allRides.val().filter(r=> r.uid == userID);
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
+    ourDataBase.on('value', function(snapshot) {
+      console.log(snapshotToArray(snapshot));
+      this.rides = snapshotToArray(snapshot);
+      console.log(this.rides);
+    })
+
   }
 
   ngOnInit() {}
 }
+
+const snapshotToArray = (snapshot: any) => {
+  const returnArr = [];
+
+  snapshot.forEach(function(childSnapshot) {
+    const item = childSnapshot.val();
+    item.key = childSnapshot.key;
+
+    returnArr.push(item);
+  });
+
+  return returnArr;
+};

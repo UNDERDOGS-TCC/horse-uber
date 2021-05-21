@@ -3,7 +3,7 @@ import { Environment, Geocoder, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleM
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
 import * as firebase from 'firebase';
-import * as moment from 'moment';
+import { TripData } from '../interfaces/tripData';
 
 declare var google: any;
 
@@ -234,15 +234,16 @@ export class RidePage implements OnInit {
     const userID = firebase.default.auth().currentUser.uid;
     const ourDataBase = firebase.default.database().ref('rides');
 
-    ourDataBase.push().set({
-      'destination_ride': this.toGoClicked.toString(),
-      'horse_name': 'CAVALÃO',
-      'origin_ride': this.actualClicked.toString(),
-      'ride_date': rideDate.toString(),
-      'ride_hour': rideHour.toString(),
-      'ride_value': 'R$ 25,00',
-      'uid': userID.toString(),
-    });
-  }
+    const tripData = {
+      destination_ride: this.toGoClicked.toString(),
+      horse_name: 'CAVALÃO',
+      origin_ride: this.actualClicked.toString(),
+      ride_date: rideDate.toString(),
+      ride_hour: rideHour.toString(),
+      ride_value: 'R$ 25,00',
+      uid: userID.toString(),
+    } as TripData;
 
+    ourDataBase.push(tripData);
+  }
 }
