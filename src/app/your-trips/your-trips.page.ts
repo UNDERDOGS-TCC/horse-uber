@@ -17,11 +17,13 @@ export class YourTripsPage implements OnInit {
     const userID = firebase.default.auth().currentUser.uid;
     const ourDataBase = firebase.default.database().ref('rides');
 
-    ourDataBase.on('value', function(snapshot) {
-      console.log(snapshotToArray(snapshot));
-      this.rides = snapshotToArray(snapshot);
-      console.log(this.rides);
-    })
+    ourDataBase.on('value', (snapshot) => {
+      const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
+      if (data.length != 0){
+        this.rides = data;
+      }
+    });
+
 
   }
 

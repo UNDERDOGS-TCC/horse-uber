@@ -66,7 +66,15 @@
   </ion-item>
 
   <br>
-  <ion-button class="ion-default-button" expand="block" (click)="register()">PRONTO</ion-button>
+  <ion-item>
+    <strong>
+    <ion-text>Foto de Perfil</ion-text></strong>
+    <ion-label color="medium" position="floating">(URL)</ion-label>
+    <ion-input [(ngModel)]="pictureUrl"></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-button class="ion-default-button" expand="block" (click)="register()" routerLink="/tela-login" >PRONTO</ion-button>
   <br>
 
 </ion-content>

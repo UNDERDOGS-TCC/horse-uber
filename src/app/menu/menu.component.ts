@@ -10,11 +10,23 @@ import * as firebase from 'firebase';
 export class MenuComponent {
 
   pages : any;
-  userName: any = firebase.default.auth().currentUser.displayName;
+  userName: any;
+  userStarsCount: any;
+  userPictureURL: any;
 
   constructor(private authService: AuthService)
   {
     this.sideMenu();
+
+    const userID = firebase.default.auth().currentUser.uid;
+    const ourDataBase = firebase.default.database().ref('users');
+
+    ourDataBase.on('value', (snapshot) => {
+      const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
+        this.userName = data[0].userName;
+        this.userStarsCount = data[0].userStars;
+        this.userPictureURL = data[0].userPictureUrl;
+    });
   }
 
   sideMenu()
@@ -70,3 +82,15 @@ export class MenuComponent {
   }
 }
 
+const snapshotToArray = (snapshot: any) => {
+  const returnArr = [];
+
+  snapshot.forEach(function(childSnapshot) {
+    const item = childSnapshot.val();
+    item.key = childSnapshot.key;
+
+    returnArr.push(item);
+  });
+
+  return returnArr;
+};

@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { TripData } from '../interfaces/tripData';
+import { ToastController } from '@ionic/angular';
 
 declare var google: any;
 
@@ -29,9 +30,8 @@ export class RidePage implements OnInit {
   public destination: any;
   public removeLine: boolean = false;
   private googleDirectionService = new google.maps.DirectionsService();
-  private geocoder = new google.maps.Geocoder();
 
-  constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone) { }
+  constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone, public toastController: ToastController) { }
 
   async ngOnInit() {
     await this.platform.ready();
@@ -220,30 +220,42 @@ export class RidePage implements OnInit {
   }
 
   calcularRota(){
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    var rideDate = dd + '/' + mm + '/' + yyyy;
+    if (this.removeLine === true){
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var yyyy = today.getFullYear();
+      var rideDate = dd + '/' + mm + '/' + yyyy;
 
-    var date = new Date();
-    var singleMinute = ('0'+ date.getMinutes()).slice(-2);
-    var singleHour = ('0'+ date.getHours()).slice(-2);
-    var rideHour = singleHour+':'+singleMinute;
+      var date = new Date();
+      var singleMinute = ('0'+ date.getMinutes()).slice(-2);
+      var singleHour = ('0'+ date.getHours()).slice(-2);
+      var rideHour = singleHour+':'+singleMinute;
 
-    const userID = firebase.default.auth().currentUser.uid;
-    const ourDataBase = firebase.default.database().ref('rides');
+      const userID = firebase.default.auth().currentUser.uid;
+      const ourDataBase = firebase.default.database().ref('rides');
 
-    const tripData = {
-      destination_ride: this.toGoClicked.toString(),
-      horse_name: 'CAVALÃO',
-      origin_ride: this.actualClicked.toString(),
-      ride_date: rideDate.toString(),
-      ride_hour: rideHour.toString(),
-      ride_value: 'R$ 25,00',
-      uid: userID.toString(),
-    } as TripData;
+      const tripData = {
+        destination_ride: this.toGoClicked.toString(),
+        horse_name: 'CAVALÃO',
+        origin_ride: this.actualClicked.toString(),
+        ride_date: rideDate.toString(),
+        ride_hour: rideHour.toString(),
+        ride_value: 'R$ 25,00',
+        uid: userID.toString(),
+      } as TripData;
 
-    ourDataBase.push(tripData);
+    ourDataBase.push(tripData).toJSON();
+    }else{
+      this.presentToast();
+    }
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Por favor, selecione uma rota.',
+      duration: 2000
+    });
+    toast.present();
   }
 }
