@@ -21,6 +21,7 @@ export class YourTripsPage implements OnInit {
       const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
       if (data.length != 0){
         this.rides = data;
+        this.rides = this.rides.reverse();
       }
     });
 
