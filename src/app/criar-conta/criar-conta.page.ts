@@ -27,7 +27,9 @@ export class CriarContaPage implements OnInit {
 
       const userID = firebase.default.auth().currentUser.uid;
       const ourDataBase = firebase.default.database().ref('users');
-
+      if (this.pictureUrl === undefined){
+        this.pictureUrl = 'https://i.imgur.com/ySMlqB6.png';
+      }
       const userData = {
         uid: userID.toString(),
         userName: this.name.trim() + ' ' + this.lastName.trim(),

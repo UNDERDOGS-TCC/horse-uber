@@ -6,9 +6,9 @@
   <ion-card class="new-background-color">
     <ion-card-header class="ion-text-center">
       <ion-card-title style="font-size: x-large;" color="light">Horse Cash</ion-card-title>
-      <ion-card-subtitle style="font-size: x-large;" color="light">R$550,00</ion-card-subtitle>
+      <ion-card-subtitle style="font-size: x-large;" color="light">R${{ userCash }}</ion-card-subtitle>
     </ion-card-header>
-    <ion-button color="light" expand="block" mode="md">
+    <ion-button color="light" expand="block" mode="md" (click)="addCash()">
       Adicionar Saldo
     </ion-button>
   </ion-card>
@@ -27,7 +27,7 @@
 
   <ion-button color="light" expand="full" style="font-size: large" mode="md">
     Dinheiro
-    <ion-icon name="card-outline" slot="end"></ion-icon>
+    <ion-icon name="cash-outline" slot="end"></ion-icon>
   </ion-button>
 
   <ion-button color="light" expand="full" style="font-size: large" mode="md">
