@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, ToastController } from '@ionic/angular';
+import * as firebase from 'firebase';
 import { User } from '../interfaces/user';
+import { UserData } from '../interfaces/userData';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class CriarContaPage implements OnInit {
   public userRegister: User = {};
+  public name: string; public lastName: string; public pictureUrl: string;
   private loading: any;
 
   constructor(private loadingController: LoadingController, private toastController: ToastController, private authService: AuthService) { }
@@ -21,6 +24,21 @@ export class CriarContaPage implements OnInit {
     await this.presentLoading();
     try{
       await this.authService.register(this.userRegister);
+
+      const userID = firebase.default.auth().currentUser.uid;
+      const ourDataBase = firebase.default.database().ref('users');
+      if (this.pictureUrl === undefined){
+        this.pictureUrl = 'https://i.imgur.com/ySMlqB6.png';
+      }
+      const userData = {
+        uid: userID.toString(),
+        userName: this.name.trim() + ' ' + this.lastName.trim(),
+        userBalance: '0.00',
+        userStars: '0.00',
+        userPictureUrl: this.pictureUrl.toString(),
+      } as UserData;
+    ourDataBase.push(userData).toJSON();
+
     }catch(error){
       this.presentToast(error.message);
     }finally{

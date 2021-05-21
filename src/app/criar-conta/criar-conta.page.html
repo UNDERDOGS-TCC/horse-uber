@@ -29,14 +29,14 @@
   <ion-item>
     <ion-text>Nome</ion-text>
     <ion-label color="medium" position="floating">digite seu nome</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="name"></ion-input>
   </ion-item>
 
   <br>
   <ion-item>
     <ion-text>Sobrenome</ion-text>
     <ion-label color="medium" position="floating">digite seu sobrenome</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="lastName"></ion-input>
   </ion-item>
 
   <br>
@@ -66,7 +66,15 @@
   </ion-item>
 
   <br>
-  <ion-button class="ion-default-button" expand="block" (click)="register()">PRONTO</ion-button>
+  <ion-item>
+    <strong>
+    <ion-text>Foto de Perfil</ion-text></strong>
+    <ion-label color="medium" position="floating">URL (Opcional)</ion-label>
+    <ion-input [(ngModel)]="pictureUrl"></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-button class="ion-default-button" expand="block" (click)="register()" routerLink="/tela-login" >PRONTO</ion-button>
   <br>
 
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-your-trips',
@@ -9,24 +9,36 @@ import { HttpClient } from '@angular/common/http';
 export class YourTripsPage implements OnInit {
   rides: any;
 
-  constructor(public http: HttpClient) {
+  constructor() {
     this.getData();
   }
 
-  getData() {
-    this.http
-      .get(
-        'https://my-json-server.typicode.com/CaiqueSobral/horse_uberjsontestes/rides'
-      )
-      .subscribe(
-        (data) => {
-          this.rides = data;
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  getData(){
+    const userID = firebase.default.auth().currentUser.uid;
+    const ourDataBase = firebase.default.database().ref('rides');
+
+    ourDataBase.on('value', (snapshot) => {
+      const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
+      if (data.length != 0){
+        this.rides = data;
+      }
+    });
+
+
   }
 
   ngOnInit() {}
 }
+
+const snapshotToArray = (snapshot: any) => {
+  const returnArr = [];
+
+  snapshot.forEach(function(childSnapshot) {
+    const item = childSnapshot.val();
+    item.key = childSnapshot.key;
+
+    returnArr.push(item);
+  });
+
+  return returnArr;
+};
