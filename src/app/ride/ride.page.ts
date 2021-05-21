@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Environment, Geocoder, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsAnimation, GoogleMapsEvent, ILatLng, Marker, Polyline } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular';
+import * as firebase from 'firebase';
+import * as moment from 'moment';
 
 declare var google: any;
 
@@ -218,7 +220,29 @@ export class RidePage implements OnInit {
   }
 
   calcularRota(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    var rideDate = dd + '/' + mm + '/' + yyyy;
 
+    var date = new Date();
+    var singleMinute = ('0'+ date.getMinutes()).slice(-2);
+    var singleHour = ('0'+ date.getHours()).slice(-2);
+    var rideHour = singleHour+':'+singleMinute;
+
+    const userID = firebase.default.auth().currentUser.uid;
+    const ourDataBase = firebase.default.database().ref('rides');
+
+    ourDataBase.push().set({
+      'destination_ride': this.toGoClicked.toString(),
+      'horse_name': 'CAVALÃO',
+      'origin_ride': this.actualClicked.toString(),
+      'ride_date': rideDate.toString(),
+      'ride_hour': rideHour.toString(),
+      'ride_value': 'R$ 25,00',
+      'uid': userID.toString(),
+    });
   }
 
 }

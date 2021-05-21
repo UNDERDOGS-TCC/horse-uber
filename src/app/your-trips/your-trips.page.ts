@@ -18,7 +18,10 @@ export class YourTripsPage implements OnInit {
     const ourDataBase = firebase.default.database().ref('rides');
     ourDataBase.get().then((allRides) => {
       if (allRides.exists()) {
-        this.rides = allRides.val().filter(r=> r.uid == userID);
+        console.log(allRides.val()[4]);
+        //console.log(x.filter(r=> r.uid === userID));
+
+        //this.rides = allRides.val().filter(r=> r.uid == userID);
       } else {
         console.log("No data available");
       }
