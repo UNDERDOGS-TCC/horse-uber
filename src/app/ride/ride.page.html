@@ -1,24 +1,50 @@
 <app-header title="Viagem"></app-header>
+<ion-content fullscream class="new-body-color" mode="md">
+  <div #map id="map">
+    <ion-toolbar slot="fixed" color="translucent">
+      <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}">
+      </ion-searchbar>
+      <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!actualLocation.length">
+        <ion-item (click)="selectActualPoint(r)" *ngFor="let r of searchResultsActual">
+          {{ r.description }}
+        </ion-item>
+      </ion-list>
 
-<ion-content [fullscreen]="true" class="new-body-color" mode="md">
+      <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}">
+      </ion-searchbar>
+      <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!toGoLocation.length">
+        <ion-item (click)="selectToGoPoint(results)" *ngFor="let results of searchResultsToGo">
+          {{ results.description }}
+        </ion-item>
+      </ion-list>
+    </ion-toolbar>
 
-  <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}"></ion-searchbar>
-  <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!actualLocation.length"  >
-    <ion-item (click)="selectActualPoint(r)" *ngFor="let r of searchResultsActual">
-      {{ r.description }}
-    </ion-item>
-  </ion-list>
+    <div class="request-horse" ion-padding ion-text-center [hidden]="!destination">
+      <h4>Horse Ride</h4>
+      <span>Melhores Viagens</span>
 
-  <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}"></ion-searchbar>
-  <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!toGoLocation.length"  >
-    <ion-item (click)="selectToGoPoint(results)" *ngFor="let results of searchResultsToGo">
-      {{ results.description }}
-    </ion-item>
-  </ion-list>
-
-  <div class="button-div">
-    <ion-button class="button" (click)="calcularRota()" expand="block" routerLink="/make-a-ride">Confirmar</ion-button>
+      <ion-grid class="ion-margin-vertical">
+        <ion-row>
+          <ion-col size="4">
+            <img src="https://i.imgur.com/ySMlqB6.png">
+            <span class="category">HorseX</span>
+            <span>R$12,00</span>
+          </ion-col>
+          <ion-col size="4">
+            <img src="https://i.imgur.com/ySMlqB6.png">
+            <span class="category">H-Confort</span>
+            <span>R$17,50</span>
+          </ion-col>
+          <ion-col size="4">
+            <img src="https://i.imgur.com/ySMlqB6.png">
+            <span class="category">Horse-Black</span>
+            <span>R$25,00</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button class="button" (click)="calcularRota()" expand="block" routerLink="/make-a-ride">Confirmar
+      </ion-button>
+    </div>
   </div>
 
-  <div #map id="map"></div>
 </ion-content>
