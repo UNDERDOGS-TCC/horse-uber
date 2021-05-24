@@ -30,3 +30,20 @@ ion-col {
   font-size: 12px;
   font-weight: bold;
 }
+.pageTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: $font-text;
+  color: $font-title-text-color;
+  font-size: $font-size-page-title;
+  padding: 10px;
+}
+
+.pageSubTitle {
+  text-align: center;
+  justify-content: center;
+  font-family: $font-text;
+  color: $font-title-text-color;
+  font-size: $font-size-page-subtitle;
+  padding: 10px;
+}

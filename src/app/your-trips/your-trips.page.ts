@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./your-trips.page.scss'],
 })
 export class YourTripsPage implements OnInit {
-  rides: any;
+  public rides: any;
 
   constructor() {
     this.getData();
@@ -24,7 +24,6 @@ export class YourTripsPage implements OnInit {
       }
     });
   }
-
   ngOnInit() {}
 }
 
