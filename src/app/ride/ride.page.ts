@@ -235,7 +235,7 @@ export class RidePage implements OnInit {
         this.tripType = 'HorseX';
 
         this.map.moveCamera({ target: points });
-        this.map.panBy(0, 90);
+        this.map.panBy(0, 100);
       }
     );
   }
