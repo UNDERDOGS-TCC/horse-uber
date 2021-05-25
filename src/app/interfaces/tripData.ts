@@ -1,6 +1,6 @@
 export interface TripData {
     destination_ride: string;
-    horse_name: string;
+    trip_type: string;
     origin_ride: string;
     ride_date: string;
     ride_hour: string;

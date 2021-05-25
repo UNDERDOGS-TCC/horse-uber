@@ -10,32 +10,93 @@
   }
 }
 ion-searchbar {
-  font-size: $font-size-page-subtitle - 3px;
-  --color: $font-body-text-color;
+  --background: #fff;
+  --color: #1e1e1e;
 }
-
+#backButton{
+  background-color: transparent;
+}
+ion-icon{
+  color: $header-background-color;
+}
 #map{
-  min-width: 100px;
-  min-height: 100px;
-
-  height: 68vh;
-  margin: 10px 5px 10px 5px;
-  border-width: 0.5px;
-  border-style: solid;
-  border-radius: 1%;
-  border-color: $header-background-color;
+  height: calc(100vh - 68px);
 }
 .button{
   --background: none;
   background-color: $header-background-color;
   --border-radius: 1%;
 }
-.button-div{
-  margin: 7px 7px 7px 7px;
-}
+
 ion-list{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
 }
 ion-item{
   --border-color: #cccccc;
+}
+ion-list, .request-horse{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.botaoVoltar{
+  text-align: right;
+  align-items: flex-end;
+}
+.request-horse{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 215px;
+  background-color: white;
+
+  h4{
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 2px;
+    font-family: $font-text !important;
+    font-weight: bold;
+  }
+
+  img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    position: sticky;
+    margin: 0 auto -15px auto;
+  }
+  span{
+    display: block;
+    text-align: center;
+    font-family: $font-text !important;
+    font-weight: bold;
+  }
+
+  ion-grid{
+
+    .active{
+      border-width: 0.2px;
+      border-style: solid;
+      border-radius: 1%;
+      border-color: $header-background-color;
+    }
+    span{
+      font-size: 12px;
+      margin: 0 auto;
+      display: table;
+      position: relative;
+      font-family: $font-text !important;
+
+      &.category{
+        color: white;
+        background-color: $header-background-color;
+        margin-top: 0px;
+        padding: 3px 5px;
+        border-radius: 10px;
+        font-weight: bold;
+        font-family: $font-text !important;
+      }
+    }
+  }
 }

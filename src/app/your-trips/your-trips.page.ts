@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./your-trips.page.scss'],
 })
 export class YourTripsPage implements OnInit {
-  rides: any;
+  public rides: any;
 
   constructor() {
     this.getData();
@@ -20,14 +20,10 @@ export class YourTripsPage implements OnInit {
     ourDataBase.on('value', (snapshot) => {
       const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
       if (data.length != 0){
-        this.rides = data;
-        this.rides = this.rides.reverse();
+        this.rides = data.reverse();
       }
     });
-
-
   }
-
   ngOnInit() {}
 }
 
