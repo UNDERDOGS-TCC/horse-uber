@@ -41,7 +41,7 @@ export class RidePage implements OnInit {
   private googleDirectionService = new google.maps.DirectionsService();
   private userBalanceRide: string;
   private userStarsRide: string;
-  public selectedTripValue: string;
+  public selectedTripValue: string; public valueBlack: string; public valueConfort: string; public valueHorseX: string;
 
   constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone, public toastController: ToastController) {
 
@@ -211,6 +211,28 @@ export class RidePage implements OnInit {
           width: 3,
         });
 
+        const rideData = results.routes[0].legs[0];
+        var distancia = rideData.distance.value;
+        var tempo = Math.round(rideData.duration.value / 60);
+
+        this.valueHorseX = (distancia * 0.01).toString();
+        this.valueConfort = (parseFloat(this.valueHorseX) * 1.2).toString();
+        this.valueBlack = (parseFloat(this.valueHorseX) * 1.4).toString();
+
+        this.valueHorseX = parseFloat(this.valueHorseX).toFixed(2).toString().replace('.', ',');
+        this.valueConfort = parseFloat(this.valueConfort).toFixed(2).toString().replace('.', ',');
+        this.valueBlack = parseFloat(this.valueBlack).toFixed(2).toString().replace('.', ',');
+
+        const horseX = document.getElementById("horseX");
+        const hConfort = document.getElementById("hConfort");
+        const hBlack = document.getElementById("hBlack");
+
+        horseX.classList.add('active');
+        hConfort.classList.remove('active');
+        hBlack.classList.remove('active');
+
+        this.selectedTripValue = this.valueHorseX;
+
         this.map.moveCamera({ target: points });
         this.map.panBy(0, 90);
       }
@@ -229,8 +251,8 @@ export class RidePage implements OnInit {
       }
     });
 
-    if (parseFloat(this.userBalanceRide) >= 25) {
-        this.userBalanceRide = (parseFloat(this.userBalanceRide) - 25).toFixed(2).toString();
+    if (parseFloat(this.userBalanceRide) >= parseFloat(this.selectedTripValue)) {
+        this.userBalanceRide = (parseFloat(this.userBalanceRide) - parseFloat(this.selectedTripValue)).toFixed(2).toString();
         this.userBalanceRide = this.userBalanceRide.replace('.', ',');
         this.userStarsRide = (parseFloat(this.userStarsRide) + 0.5).toFixed(2).toString();
 
@@ -252,7 +274,7 @@ export class RidePage implements OnInit {
           origin_ride: this.actualClicked.toString(),
           ride_date: rideDate.toString(),
           ride_hour: rideHour.toString(),
-          ride_value: 'R$ 25,00',
+          ride_value: 'R$ ' + this.selectedTripValue,
           uid: userID.toString(),
         } as TripData;
         ourDataBaseRides.push(tripData).toJSON();
@@ -268,10 +290,8 @@ export class RidePage implements OnInit {
             userPictureUrl: data[0].userPictureUrl
           });
         });
-
         this.presentToast('Corrida realizada!!! Valor final: R$ 25,00! \n Seu saldo é R$' + this.userBalanceRide + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 6000);
     }else{
-      console.log(this.selectedTripValue);
       this.presentToast('Você não possui saldo suficiente para realizar a corrida.', 2000);
     }
   }
@@ -291,6 +311,21 @@ export class RidePage implements OnInit {
         this.toGoClicked = 'Para onde você vai?';
         this.addOriginMarker();
     });
+  }
+
+  selecionarX(){
+    this.selectedTripValue = this.valueHorseX
+    console.log(this.selectedTripValue);
+  }
+
+  selecionarConfort(){
+    this.selectedTripValue = this.valueConfort
+    console.log(this.selectedTripValue);
+  }
+
+  selecionarBlack(){
+    this.selectedTripValue = this.valueBlack
+    console.log(this.selectedTripValue);
   }
 }
 
@@ -313,11 +348,11 @@ function SelectHorseX(){
   const hConfort = document.querySelector('#hConfort');
   const hBlack = document.querySelector('#hBlack');
 
-  horseX.classList.add('active')
-  hConfort.classList.remove('active')
-  hBlack.classList.remove('active')
-  this.selectedTripValue = 'R$ 28,35';
-  console.log(this.selectedTripValue);
+  horseX.classList.add('active');
+  hConfort.classList.remove('active');
+  hBlack.classList.remove('active');
+
+  return horseX;
 }
 
 function SelecthConfort(){
@@ -325,11 +360,11 @@ function SelecthConfort(){
   const hConfort = document.querySelector('#hConfort');
   const hBlack = document.querySelector('#hBlack');
 
-  horseX.classList.remove('active')
-  hConfort.classList.add('active')
-  hBlack.classList.remove('active')
-  this.selectedTripValue = 'R$ 30,35';
-  console.log(this.selectedTripValue);
+  horseX.classList.remove('active');
+  hConfort.classList.add('active');
+  hBlack.classList.remove('active');
+
+  return hConfort;
 }
 
 function SelecthBlack(){
@@ -337,9 +372,9 @@ function SelecthBlack(){
   const hConfort = document.querySelector('#hConfort');
   const hBlack = document.querySelector('#hBlack');
 
-  horseX.classList.remove('active')
-  hConfort.classList.remove('active')
-  hBlack.classList.add('active')
-  this.selectedTripValue = 'R$ 35,35';
-  console.log(this.selectedTripValue);
+  horseX.classList.remove('active');
+  hConfort.classList.remove('active');
+  hBlack.classList.add('active');
+
+  return hBlack;
 }

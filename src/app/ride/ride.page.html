@@ -28,20 +28,20 @@
 
       <ion-grid class="ion-margin-vertical">
         <ion-row>
-          <ion-col id="horseX" size="4">
+          <ion-col (click)="selecionarX()" class="active" id="horseX" size="4">
             <img src="https://i.imgur.com/ySMlqB6.png">
             <span class="category">HorseX</span>
-            <span>R$12,00</span>
+            <span>R${{ valueHorseX }}</span>
           </ion-col>
-          <ion-col id="hConfort" size="4">
+          <ion-col (click)="selecionarConfort()" id="hConfort" size="4">
             <img src="https://i.imgur.com/ySMlqB6.png">
             <span class="category">Confort</span>
-            <span>R$17,50</span>
+            <span>R${{ valueConfort }}</span>
           </ion-col>
-          <ion-col id="hBlack" size="4">
+          <ion-col (click)="selecionarBlack()" id="hBlack" size="4">
             <img src="https://i.imgur.com/ySMlqB6.png">
             <span class="category">Black</span>
-            <span>R$25,00</span>
+            <span>R${{ valueBlack }}</span>
           </ion-col>
         </ion-row>
       </ion-grid>
