@@ -43,18 +43,22 @@ export class PaymentsPage implements OnInit {
     });
 
     this.getData();
-    this.presentToast();
+    this.presentToast('R$25,00 foram adicionados a seu saldo.');
   }
 
   ngOnInit() {
   }
 
-  async presentToast() {
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
-      message: 'R$25,00 foram adicionados a seu saldo.',
+      message: message,
       duration: 2000
     });
     toast.present();
+  }
+
+  genericButton() {
+    this.presentToast('Em breve');
   }
 
 }
