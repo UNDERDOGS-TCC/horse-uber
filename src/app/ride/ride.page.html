@@ -1,11 +1,14 @@
 <app-header title="Viagem"></app-header>
 <ion-content fullscream class="new-body-color" mode="md">
   <div #map id="map">
-    <ion-button fill="clear" id="backButton" size="large" (click)="voltar()" [hidden]="!destination">
-      <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
-    </ion-button>
+    <div class="botaoVoltar">
+      <ion-button fill="clear" id="backButton" size="large" (click)="voltar()" [hidden]="!destination">
+        <ion-icon name="close-outline" color="dark"></ion-icon>
+      </ion-button>
+    </div>
     <ion-toolbar slot="fixed" color="translucent">
-      <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}" [hidden]="destination">
+      <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}"
+        [hidden]="destination">
       </ion-searchbar>
       <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!actualLocation.length">
         <ion-item (click)="selectActualPoint(r)" *ngFor="let r of searchResultsActual">
@@ -13,7 +16,8 @@
         </ion-item>
       </ion-list>
 
-      <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}" [hidden]="destination">
+      <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}"
+        [hidden]="destination">
       </ion-searchbar>
       <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!toGoLocation.length">
         <ion-item (click)="selectToGoPoint(results)" *ngFor="let results of searchResultsToGo">

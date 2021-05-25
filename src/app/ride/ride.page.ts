@@ -41,7 +41,7 @@ export class RidePage implements OnInit {
   private googleDirectionService = new google.maps.DirectionsService();
   private userBalanceRide: string;
   private userStarsRide: string;
-  public selectedTripValue: string; public valueBlack: string; public valueConfort: string; public valueHorseX: string;
+  public selectedTripValue: string; public valueBlack: string; public valueConfort: string; public valueHorseX: string; public tripType: string;
 
   constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone, public toastController: ToastController) {
 
@@ -232,6 +232,7 @@ export class RidePage implements OnInit {
         hBlack.classList.remove('active');
 
         this.selectedTripValue = this.valueHorseX;
+        this.tripType = 'HorseX';
 
         this.map.moveCamera({ target: points });
         this.map.panBy(0, 90);
@@ -270,7 +271,7 @@ export class RidePage implements OnInit {
         const ourDataBaseRides = firebase.default.database().ref('rides');
         const tripData = {
           destination_ride: this.toGoClicked.toString(),
-          horse_name: 'CAVALÃO',
+          trip_type: this.tripType,
           origin_ride: this.actualClicked.toString(),
           ride_date: rideDate.toString(),
           ride_hour: rideHour.toString(),
@@ -290,7 +291,7 @@ export class RidePage implements OnInit {
             userPictureUrl: data[0].userPictureUrl
           });
         });
-        this.presentToast('Corrida realizada!!! Valor final: R$ 25,00! \n Seu saldo é R$' + this.userBalanceRide + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 6000);
+        this.presentToast('Corrida realizada!!! Valor final: R$ '+ this.selectedTripValue +'! \n Seu saldo é R$' + this.userBalanceRide + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 6000);
     }else{
       this.presentToast('Você não possui saldo suficiente para realizar a corrida.', 2000);
     }
@@ -314,18 +315,18 @@ export class RidePage implements OnInit {
   }
 
   selecionarX(){
-    this.selectedTripValue = this.valueHorseX
-    console.log(this.selectedTripValue);
+    this.selectedTripValue = this.valueHorseX;
+    this.tripType = 'HorseX';
   }
 
   selecionarConfort(){
-    this.selectedTripValue = this.valueConfort
-    console.log(this.selectedTripValue);
+    this.selectedTripValue = this.valueConfort;
+    this.tripType = 'Confort';
   }
 
   selecionarBlack(){
-    this.selectedTripValue = this.valueBlack
-    console.log(this.selectedTripValue);
+    this.selectedTripValue = this.valueBlack;
+    this.tripType = 'Black';
   }
 }
 
