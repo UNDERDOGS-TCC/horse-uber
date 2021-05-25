@@ -33,26 +33,31 @@ export class RidePage implements OnInit {
   public searchResultsActual = new Array<any>();
   public searchResultsToGo = new Array<any>();
   public actualClicked: string = 'Onde você está?';
-  public toGoClicked: string = 'Para Onde você vai?';
+  public toGoClicked: string = 'Para onde você vai?';
   private originMarker: Marker;
   public line: Polyline;
   private markerDestination: Marker;
   public destination: any;
-  public removeLine: boolean = false;
   private googleDirectionService = new google.maps.DirectionsService();
   private userBalanceRide: string;
   private userStarsRide: string;
+  public selectedTripValue: string;
 
-  constructor(
-    private platform: Platform,
-    private geolocation: Geolocation,
-    private ngZone: NgZone,
-    public toastController: ToastController
-  ) {}
+  constructor(private platform: Platform, private geolocation: Geolocation, private ngZone: NgZone, public toastController: ToastController) {
+
+  }
 
   async ngOnInit() {
     await this.platform.ready();
     this.loadMap();
+
+    const horseX = document.getElementById("horseX");
+    const hConfort = document.getElementById("hConfort");
+    const hBlack = document.getElementById("hBlack");
+
+    horseX.addEventListener('click', SelectHorseX);
+    hConfort.addEventListener('click', SelecthConfort);
+    hBlack.addEventListener('click', SelecthBlack);
   }
 
   async loadMap() {
@@ -143,38 +148,6 @@ export class RidePage implements OnInit {
     });
     this.originMarker.setPosition(actualInfo[0].position);
 
-    if (this.removeLine == true) {
-      this.line.remove();
-
-      this.googleDirectionService.route(
-        {
-          origin: this.originMarker.getPosition(),
-          destination: this.markerDestination.getPosition(),
-          travelMode: 'DRIVING',
-        },
-        async (results) => {
-          const points = new Array<ILatLng>();
-          const routes = results.routes[0].overview_path;
-          for (let i = 0; i < routes.length; i++) {
-            points[i] = {
-              lat: routes[i].lat(),
-              lng: routes[i].lng(),
-            };
-          }
-
-          this.line = await this.map.addPolyline({
-            points: points,
-            color: '#ADA388',
-            width: 3,
-          });
-
-          this.map.moveCamera({
-            target: points,
-          });
-        }
-      );
-    }
-
     await this.map.moveCamera({
       target: {
         lat: actualInfo[0].position.lat,
@@ -185,9 +158,6 @@ export class RidePage implements OnInit {
   }
 
   toGoLocationChanged() {
-    if (this.removeLine == true) {
-      this.line.remove();
-    }
 
     if (!this.toGoLocation.trim().length) return;
     this.autoComplete.getPlacePredictions(
@@ -210,16 +180,14 @@ export class RidePage implements OnInit {
       address: this.destination.description,
     });
 
-    if (this.markerDestination == null) {
+
       this.markerDestination = this.map.addMarkerSync({
         title: this.destination.description,
         icon: '#ADA388',
         animation: GoogleMapsAnimation.DROP,
         position: info[0].position,
       });
-    } else {
-      this.markerDestination.setPosition(info[0].position);
-    }
+
 
     this.googleDirectionService.route(
       {
@@ -242,11 +210,9 @@ export class RidePage implements OnInit {
           color: '#ADA388',
           width: 3,
         });
-        this.removeLine = true;
 
-        this.map.moveCamera({
-          target: points,
-        });
+        this.map.moveCamera({ target: points });
+        this.map.panBy(0, 90);
       }
     );
   }
@@ -264,7 +230,6 @@ export class RidePage implements OnInit {
     });
 
     if (parseFloat(this.userBalanceRide) >= 25) {
-      if (this.removeLine === true) {
         this.userBalanceRide = (parseFloat(this.userBalanceRide) - 25).toFixed(2).toString();
         this.userBalanceRide = this.userBalanceRide.replace('.', ',');
         this.userStarsRide = (parseFloat(this.userStarsRide) + 0.5).toFixed(2).toString();
@@ -304,11 +269,9 @@ export class RidePage implements OnInit {
           });
         });
 
-        this.presentToast('Corrida realizada!!! Valor final: R$ 25,00! \n Seu saldo é R$' + this.userBalanceRide + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 5000);
-      } else {
-        this.presentToast('Por favor selecione uma rota.', 2000);
-      }
+        this.presentToast('Corrida realizada!!! Valor final: R$ 25,00! \n Seu saldo é R$' + this.userBalanceRide + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 6000);
     }else{
+      console.log(this.selectedTripValue);
       this.presentToast('Você não possui saldo suficiente para realizar a corrida.', 2000);
     }
   }
@@ -320,7 +283,17 @@ export class RidePage implements OnInit {
     });
     toast.present();
   }
+
+  voltar(){
+    this.ngZone.run(() => {
+        this.map.clear();
+        this.destination = null;
+        this.toGoClicked = 'Para onde você vai?';
+        this.addOriginMarker();
+    });
+  }
 }
+
 
 const snapshotToArray = (snapshot: any) => {
   const returnArr = [];
@@ -334,3 +307,39 @@ const snapshotToArray = (snapshot: any) => {
 
   return returnArr;
 };
+
+function SelectHorseX(){
+  const horseX = document.querySelector('#horseX');
+  const hConfort = document.querySelector('#hConfort');
+  const hBlack = document.querySelector('#hBlack');
+
+  horseX.classList.add('active')
+  hConfort.classList.remove('active')
+  hBlack.classList.remove('active')
+  this.selectedTripValue = 'R$ 28,35';
+  console.log(this.selectedTripValue);
+}
+
+function SelecthConfort(){
+  const horseX = document.querySelector('#horseX');
+  const hConfort = document.querySelector('#hConfort');
+  const hBlack = document.querySelector('#hBlack');
+
+  horseX.classList.remove('active')
+  hConfort.classList.add('active')
+  hBlack.classList.remove('active')
+  this.selectedTripValue = 'R$ 30,35';
+  console.log(this.selectedTripValue);
+}
+
+function SelecthBlack(){
+  const horseX = document.querySelector('#horseX');
+  const hConfort = document.querySelector('#hConfort');
+  const hBlack = document.querySelector('#hBlack');
+
+  horseX.classList.remove('active')
+  hConfort.classList.remove('active')
+  hBlack.classList.add('active')
+  this.selectedTripValue = 'R$ 35,35';
+  console.log(this.selectedTripValue);
+}

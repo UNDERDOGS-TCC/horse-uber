@@ -1,8 +1,11 @@
 <app-header title="Viagem"></app-header>
 <ion-content fullscream class="new-body-color" mode="md">
   <div #map id="map">
+    <ion-button fill="clear" id="backButton" size="large" (click)="voltar()" [hidden]="!destination">
+      <ion-icon name="chevron-back-outline" color="dark"></ion-icon>
+    </ion-button>
     <ion-toolbar slot="fixed" color="translucent">
-      <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}">
+      <ion-searchbar [(ngModel)]="actualLocation" (ionChange)="actualLocationChanged()" placeholder="{{actualClicked}}" [hidden]="destination">
       </ion-searchbar>
       <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!actualLocation.length">
         <ion-item (click)="selectActualPoint(r)" *ngFor="let r of searchResultsActual">
@@ -10,7 +13,7 @@
         </ion-item>
       </ion-list>
 
-      <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}">
+      <ion-searchbar [(ngModel)]="toGoLocation" (ionChange)="toGoLocationChanged()" placeholder="{{toGoClicked}}" [hidden]="destination">
       </ion-searchbar>
       <ion-list class="ion-margin-horizontal" lines="full" [hidden]="!toGoLocation.length">
         <ion-item (click)="selectToGoPoint(results)" *ngFor="let results of searchResultsToGo">
@@ -25,19 +28,19 @@
 
       <ion-grid class="ion-margin-vertical">
         <ion-row>
-          <ion-col size="4">
+          <ion-col id="horseX" size="4">
             <img src="https://i.imgur.com/ySMlqB6.png">
             <span class="category">HorseX</span>
             <span>R$12,00</span>
           </ion-col>
-          <ion-col size="4">
+          <ion-col id="hConfort" size="4">
             <img src="https://i.imgur.com/ySMlqB6.png">
-            <span class="category">H-Confort</span>
+            <span class="category">Confort</span>
             <span>R$17,50</span>
           </ion-col>
-          <ion-col size="4">
+          <ion-col id="hBlack" size="4">
             <img src="https://i.imgur.com/ySMlqB6.png">
-            <span class="category">Horse-Black</span>
+            <span class="category">Black</span>
             <span>R$25,00</span>
           </ion-col>
         </ion-row>
