@@ -254,7 +254,7 @@ export class RidePage implements OnInit {
 
 
     if (parseFloat(this.userBalanceRide) >= parseFloat(this.selectedTripValue)) {
-        this.userBalanceRide = (parseFloat(this.userBalanceRide) - parseFloat(this.selectedTripValue)).toFixed(2).toString();
+        this.userBalanceRide = (parseFloat(this.userBalanceRide) - parseFloat(this.selectedTripValue)).toString();
         this.userBalanceRide = this.userBalanceRide.replace('.', ',');
         this.userStarsRide = (parseFloat(this.userStarsRide) + 0.5).toFixed(2).toString();
 
