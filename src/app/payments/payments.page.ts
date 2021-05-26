@@ -21,6 +21,7 @@ export class PaymentsPage implements OnInit {
       const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
       if (data.length != 0){
         this.userCash = data[0].userBalance;
+        this.userCash = this.userCash.replace('.',',');
       }
     });
   }
