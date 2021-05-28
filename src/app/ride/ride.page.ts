@@ -254,8 +254,7 @@ export class RidePage implements OnInit {
 
 
     if (parseFloat(this.userBalanceRide) >= parseFloat(this.selectedTripValue)) {
-        this.userBalanceRide = (parseFloat(this.userBalanceRide) - parseFloat(this.selectedTripValue)).toFixed(2).toString();
-        this.userBalanceRide = this.userBalanceRide.replace('.', ',');
+        this.userBalanceRide = (parseFloat(this.userBalanceRide) - parseFloat(this.selectedTripValue.replace(',', '.'))).toFixed(2).toString();
         this.userStarsRide = (parseFloat(this.userStarsRide) + 0.5).toFixed(2).toString();
 
         var today = new Date();
@@ -292,7 +291,7 @@ export class RidePage implements OnInit {
             userPictureUrl: data[0].userPictureUrl
           });
         });
-        this.presentToast('Corrida realizada!!! Valor final: R$ '+ this.selectedTripValue +'! \n Seu saldo é R$' + this.userBalanceRide + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 6000);
+        this.presentToast('Corrida realizada!!! Valor final: R$ '+ this.selectedTripValue +'! \n Seu saldo é R$' + this.userBalanceRide.replace('.', ',') + '! \n Por sua corrida bem sucedida, você ganhou 0.5 estrelas!', 6000);
     }else{
       this.presentToast('Você não possui saldo suficiente para realizar a corrida.', 2000);
     }
