@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { User } from '../interfaces/user';
 import { AuthService } from '../services/auth.service';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-criar-conta',
@@ -22,7 +23,18 @@ export class CriarContaPage implements OnInit {
     try{
       await this.authService.register(this.userRegister);
     }catch(error){
-      this.presentToast(error.message);
+      
+      let message: string;
+      switch(error.code){
+        case 'auth/email-already-in-use':
+        message = 'O endereço de e-mail já está sendo usado por outra conta.';
+        break;
+        case 'auth/weak-password':
+        message = 'A senha deve ter 6 caracteres ou mais.';
+        break;
+      }
+
+      this.presentToast(message);
     }finally{
       this.loading.dismiss();
     }
