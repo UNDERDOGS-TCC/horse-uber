@@ -8,4 +8,8 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  ion-button{
+    --background: none;
+    background-color: $header-background-color;
+  }
 }
