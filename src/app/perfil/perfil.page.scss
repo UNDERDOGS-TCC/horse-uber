@@ -1,0 +1,85 @@
+@import '../../theme/variables';
+
+.new-body-color {
+  --background: no-repeat top center/cover fixed, #ffffff;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  font-family: $font-text !important;
+  background-color: #ffffff;
+}
+
+ion-input {
+  height: 50px;
+}
+
+#fileElem{
+  visibility: hidden;
+  height: 1px;
+}
+
+.card {
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #DEDEDE;
+
+  .avatar {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    margin: 0 auto;
+
+    img {
+      display: block;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      border: 8px solid #ADA388;
+      background-color: #fff;
+    }
+  }
+}
+
+.card-body-name {
+  background-color: #ffffff;
+  padding: 10px 5px 5px 10px;
+  overflow: hidden;
+  border-bottom: 2px solid #DEDEDE;
+
+  .user-meta {
+    padding-top: 2px;
+
+    .userNameLabel{
+      margin-top: 4px;
+      font-size: 15px;
+      color: #757575;
+    }
+
+    .userName {
+      margin-top: 4px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      color: $font-body-text-color;
+    }
+
+  }
+}
+#editar-foto{
+  align-items: center;
+  text-align: center;
+  font-family: $font-text !important;
+  margin-bottom: 15px;
+  height: 30px;
+  border: 1px solid #ADA388;
+  color: #ADA388;
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
+import { Firebase } from '@ionic-native/firebase';
 
 @Component({
   selector: 'app-menu',
@@ -34,9 +35,9 @@ export class MenuComponent {
     this.pages =
     [
       {
-        title: "Mensagens",
-        url: "/mensagens",
-        icon: "document-text-outline",
+        title: "Perfil",
+        url: "/perfil",
+        icon: "person-outline",
       },
       {
         title: "Seja Um Cavaleiro",

@@ -1,0 +1,42 @@
+<app-header title="Perfil"></app-header>
+
+<ion-content [fullscreen]="true" class="new-body-color" mode="md">
+  <div class="card">
+      <div class="avatar">
+        <img src="{{ userPictureURL }}" alt="">
+      </div>
+      <input type="file" id="fileElem" accept="image/jpeg, image/jpg, image/svg" (change)="handleFiles()">
+      <ion-button fill="clear" href="#" id="editar-foto">Editar foto
+        <ion-icon name="camera-outline" slot="start"></ion-icon>
+      </ion-button>
+  </div>
+  <div class="card-body-name">
+    <div class="user-meta">
+      <ion-label class="userNameLabel">Nome:</ion-label>
+      <h3 class="userName">{{ userName }}</h3>
+    </div>
+  </div>
+
+  <div class="card-body-name">
+    <div class="user-meta">
+      <ion-label class="userNameLabel">Email:</ion-label>
+      <h3 class="userName">{{ userEmail }}</h3>
+    </div>
+  </div>
+
+  <div class="card-body-name">
+    <div class="user-meta">
+      <ion-label class="userNameLabel">Estrelas:</ion-label>
+      <h3 class="userName"><ion-icon name="star-sharp"></ion-icon>  {{ userStarsCount }}</h3>
+    </div>
+  </div>
+
+  <div class="card-body-name">
+    <div class="user-meta">
+      <ion-label class="userNameLabel">Já fez:</ion-label>
+      <h3 class="userName">{{ corridasNumero }} Viagens</h3>
+    </div>
+  </div>
+
+
+</ion-content>

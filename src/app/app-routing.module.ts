@@ -52,7 +52,11 @@ const routes: Routes = [
   {
     path: 'ride',
     loadChildren: () => import('./ride/ride.module').then( m => m.RidePageModule)
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+
 
 
 ];
