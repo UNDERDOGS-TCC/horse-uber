@@ -1,14 +1,69 @@
 <app-header title="Ajuda"></app-header>
 
 <ion-content [fullscreen]="true" class="new-body-color" mode="md">
-  <ion-card>
+  <ion-slides page="true" [options]="slideOpts">
+
     <ion-slide>
-      <p>Slide 1</p>
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col></ion-col>
+            <img src="https://firebasestorage.googleapis.com/v0/b/uberhorse-c5ddf.appspot.com/o/Icone%20-%20Slide%201.png?alt=media&token=9bde0fc3-e5f2-419b-86e6-a375e577cd2c">
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col></ion-col>
+            <h1>Bem Vindo ao Horse Ride!</h1>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <p>A Horse Ride é uma prestadora de serviços na área do transporte privado.
+              Através deste aplicativo realizamos viagens pela cidade, a diferença é que ao invés de carros usamos cavalos!</p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col></ion-col>
+            <img src="https://firebasestorage.googleapis.com/v0/b/uberhorse-c5ddf.appspot.com/o/Icone%20-%20Slide%202.png?alt=media&token=c7969bc0-302d-441e-9c09-187d75595514">
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col></ion-col>
+            <h1>Como pedir uma corrida?</h1>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <p>Se cadastre no aplicativo e assim que terminar o cadastro você sera redirecionado para a página home do app, 
+              lá você pode escolher o seu destino e realizar sua corrida</p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
     </ion-slide>
     
     <ion-slide>
-      <p>Slide 2</p>
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col></ion-col>
+            <img src="">
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col></ion-col>
+            <h1>Slide</h1>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <p></p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
     </ion-slide>
-    
-  </ion-card>
+
+  </ion-slides>
 </ion-content>
