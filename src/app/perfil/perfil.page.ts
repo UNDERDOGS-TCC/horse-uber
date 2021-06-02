@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -15,7 +16,28 @@ export class PerfilPage implements OnInit {
   foto: any;
   userUid: any;
 
-  constructor() {
+  constructor(private loadingController: LoadingController) {
+  }
+
+  ngOnInit() {
+    var fileSelect = document.getElementById('editar-foto');
+    var fileElem = document.getElementById('fileElem');
+
+    fileSelect.addEventListener(
+      'click',
+      function (e) {
+        if (fileElem) {
+          fileElem.click();
+        }
+        e.preventDefault();
+      },
+      false
+    );
+
+    this.getData();
+  }
+
+  getData(){
     const userID = firebase.default.auth().currentUser.uid;
     const ourDataBase = firebase.default.database().ref('users');
     const userEmail = firebase.default.auth().currentUser.email;
@@ -36,28 +58,36 @@ export class PerfilPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    var fileSelect = document.getElementById('editar-foto');
-    var fileElem = document.getElementById('fileElem');
-
-    fileSelect.addEventListener(
-      'click',
-      function (e) {
-        if (fileElem) {
-          fileElem.click();
-        }
-        e.preventDefault();
-      },
-      false
-    );
+  setData(){
+    const userID = firebase.default.auth().currentUser.uid;
+    const ourDataBaseUsers = firebase.default.database().ref('users');
+    ourDataBaseUsers.on('value', (snapshot) => {
+      const data = snapshotToArray(snapshot).filter(r => r.uid === userID);
+      firebase.default.database().ref('users/' + data[0].key).set({
+        uid: userID,
+        userName: data[0].userName,
+        userBalance: data[0].userBalance,
+        userStars: data[0].userStars,
+        userPictureUrl: this.userPictureURL
+      });
+    });
   }
 
-  handleFiles(){
+  async handleFiles(){
     let fotoHTML: HTMLInputElement = document.getElementById('fileElem') as HTMLInputElement;
     this.foto = fotoHTML.files[0];
-    var storageRef = firebase.default.storage().ref();
-    storageRef.child('imagens/'+this.userUid).put(this.foto);
-    const newPhoto = storageRef.child('imagens');
+    var storageRef = firebase.default.storage().ref('imagens/'+this.userUid);
+    storageRef.put(this.foto);
+    storageRef.getDownloadURL().then((url) => {
+      this.userPictureURL = url.toString();
+    });
+    this.setData();
+    var loading = await this.loadingController.create({message: 'aguarde...'});
+    loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 2000)
+    this.getData();
   }
 }
 const snapshotToArray = (snapshot: any) => {

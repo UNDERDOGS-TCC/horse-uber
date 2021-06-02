@@ -52,7 +52,8 @@ const routes: Routes = [
   {
     path: 'ride',
     loadChildren: () => import('./ride/ride.module').then( m => m.RidePageModule)
-  },  {
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
@@ -63,7 +64,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, onSameUrlNavigation: "reload"})
   ],
   exports: [RouterModule]
 })

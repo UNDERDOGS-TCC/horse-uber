@@ -3,9 +3,9 @@
 <ion-content [fullscreen]="true" class="new-body-color" mode="md">
   <div class="card">
       <div class="avatar">
-        <img src="{{ userPictureURL }}" alt="">
+        <img src="{{ userPictureURL }}">
       </div>
-      <input type="file" id="fileElem" accept="image/jpeg, image/jpg, image/svg" (change)="handleFiles()">
+      <input type="file" id="fileElem" accept="image/*" (change)="handleFiles()">
       <ion-button fill="clear" href="#" id="editar-foto">Editar foto
         <ion-icon name="camera-outline" slot="start"></ion-icon>
       </ion-button>

@@ -39,9 +39,11 @@ ion-input {
     margin: 0 auto;
 
     img {
-      display: block;
+      display: inherit;
       border-radius: 50%;
-      position: absolute;
+      position: relative;
+      width: 130px !important;
+      height: 130px !important;
       top: 10px;
       border: 8px solid #ADA388;
       background-color: #fff;

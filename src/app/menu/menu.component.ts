@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import { Firebase } from '@ionic-native/firebase';
 
 @Component({
   selector: 'app-menu',
@@ -18,7 +17,14 @@ export class MenuComponent {
   constructor(private authService: AuthService)
   {
     this.sideMenu();
+    this.ngOnInit();
+  }
 
+  ngOnInit(){
+    this.getData();
+  }
+
+  getData(){
     const userID = firebase.default.auth().currentUser.uid;
     const ourDataBase = firebase.default.database().ref('users');
 
