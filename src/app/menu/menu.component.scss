@@ -9,6 +9,10 @@
     max-width: 65px !important;  //any size
     max-height: 65px !important; //any size
 }
+img{
+  width: 65px;
+  height: 65px;
+}
 .padding-avatar {
     padding-top: 50px;
 }
@@ -23,4 +27,9 @@ ion-label {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+.hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
 }

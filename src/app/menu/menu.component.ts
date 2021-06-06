@@ -17,7 +17,14 @@ export class MenuComponent {
   constructor(private authService: AuthService)
   {
     this.sideMenu();
+    this.ngOnInit();
+  }
 
+  ngOnInit(){
+    this.getData();
+  }
+
+  getData(){
     const userID = firebase.default.auth().currentUser.uid;
     const ourDataBase = firebase.default.database().ref('users');
 
@@ -34,9 +41,9 @@ export class MenuComponent {
     this.pages =
     [
       {
-        title: "Mensagens",
-        url: "/mensagens",
-        icon: "document-text-outline",
+        title: "Perfil",
+        url: "/perfil",
+        icon: "person-outline",
       },
       {
         title: "Seja Um Cavaleiro",
