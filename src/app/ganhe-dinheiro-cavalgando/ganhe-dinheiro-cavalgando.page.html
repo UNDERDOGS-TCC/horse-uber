@@ -1,8 +1,78 @@
 <app-header title="Seja Cavaleiro"></app-header>
 
 <ion-content [fullscreen]="true" class="new-body-color" mode="md">
-  <ion-card>
-    <ion-card-title align="center" color="dark"> Em breve </ion-card-title>
-    <ion-card-content class="ion-text-center" color="dark">Trocando ferraduras</ion-card-content>
-  </ion-card>
+
+  <br>
+  <strong>
+    <ion-text class="ion-padding">Insira seus Dados Pessoais</ion-text>
+  </strong>
+  <br>
+  <br>
+
+  <ion-item>
+    <ion-text>Nome</ion-text>
+    <ion-label color="medium" position="floating">digite seu nome</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Idade</ion-text>
+    <ion-label color="medium" position="floating">digite sua idade</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>CPF</ion-text>
+    <ion-label color="medium" position="floating">digite seu CPF</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Endereço</ion-text>
+    <ion-label color="medium" position="floating">digite seu endereço</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Email</ion-text>
+    <ion-label color="medium" position="floating">digite seu email</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <strong>
+    <ion-text class="ion-padding">Insira os dados de seu cavalo</ion-text>
+  </strong>
+  <br>
+  <br> 
+
+  <ion-item>
+    <ion-text>Cor</ion-text>
+    <ion-label color="medium" position="floating">digite a cor do seu cavalo</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Ferradura</ion-text>
+    <ion-label color="medium" position="floating">digite o tipo de ferradura do seu cavalo</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  
+  <br>
+  <ion-item>
+    <ion-text>Idade</ion-text>
+    <ion-label color="medium" position="floating">digite a idade do seu cavalo</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-button class="ion-default-button" expand="block" (click)="presentAlert()" routerLink="/make-a-ride" >ENVIAR DADOS</ion-button>
+  <br>
+
+
 </ion-content>
