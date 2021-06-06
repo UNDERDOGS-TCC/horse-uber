@@ -9,3 +9,23 @@
     display: none;
   }
 }
+
+ion-card{
+  height: 80vh;
+  width: 240px;
+  color: $font-body-text-color;
+  font-family: $font-text;
+  div{
+    text-align: center;
+  }
+}
+
+ion-row{
+  text-align: center;
+}
+
+img{
+  height: 200px;
+  width: 200px;
+}
+
