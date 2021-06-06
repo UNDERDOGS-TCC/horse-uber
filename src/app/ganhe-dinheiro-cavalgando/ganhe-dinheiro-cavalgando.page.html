@@ -44,15 +44,37 @@
   </ion-item>
 
   <br>
+  <br>
   <strong>
-    <ion-text class="ion-padding">Insira os dados de seu cavalo</ion-text>
+    <ion-text class="ion-padding">Nos informe sua experiência</ion-text>
   </strong>
   <br>
   <br> 
 
   <ion-item>
-    <ion-text>Cor</ion-text>
-    <ion-label color="medium" position="floating">digite a cor do seu cavalo</ion-label>
+    <ion-text>Há quanto tempo você cavalga?</ion-text>
+    <ion-label color="medium" position="floating">informe o tempo que você cavalgou</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Quantos tipos de montaria você já usou?</ion-text>
+    <ion-label color="medium" position="floating">informe as montarias que você utilizou</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  
+  <br>
+  <ion-item>
+    <ion-text>Já possui um cavalo?</ion-text>
+    <ion-label color="medium" position="floating">digite se tem ou não um cavalo</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-item>
+    <ion-text>Qual a idade do seu cavalo?</ion-text>
+    <ion-label color="medium" position="floating">digite a idade de seu cavalo</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
@@ -62,17 +84,9 @@
     <ion-label color="medium" position="floating">digite o tipo de ferradura do seu cavalo</ion-label>
     <ion-input></ion-input>
   </ion-item>
-  
-  <br>
-  <ion-item>
-    <ion-text>Idade</ion-text>
-    <ion-label color="medium" position="floating">digite a idade do seu cavalo</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
 
   <br>
   <ion-button class="ion-default-button" expand="block" (click)="presentAlert()" routerLink="/make-a-ride" >ENVIAR DADOS</ion-button>
   <br>
-
 
 </ion-content>
