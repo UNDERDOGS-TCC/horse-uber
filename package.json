@@ -36,6 +36,7 @@
     "brower": "0.0.2",
     "cordova": "^10.0.0",
     "cordova-android": "9.1.0",
+    "cordova-browser": "6.0.0",
     "cordova-ios": "6.2.0",
     "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-googlemaps": "^2.7.1",

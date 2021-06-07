@@ -7,8 +7,13 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./ganhe-dinheiro-cavalgando.page.scss'],
 })
 export class GanheDinheiroCavalgandoPage implements OnInit {
+  checkSelector:boolean;
 
   constructor(public alertController: AlertController) { }
+
+  showPage(valor:string){
+    this.checkSelector = valor === "Sim"? true : false;
+  }
 
   ngOnInit() {
   }
