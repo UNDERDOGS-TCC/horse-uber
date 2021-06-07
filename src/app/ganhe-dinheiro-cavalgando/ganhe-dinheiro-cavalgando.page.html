@@ -64,26 +64,32 @@
     <ion-input></ion-input>
   </ion-item>
   
-  <br>
-  <ion-item>
-    <ion-text>Já possui um cavalo?</ion-text>
-    <ion-label color="medium" position="floating">digite se tem ou não um cavalo</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+  <ion-list>  
+    <ion-item>
+      <ion-label>Já possui um cavalo?</ion-label>
+      <ion-select placeholder="Selecionar" #S (ionChange)="showPage(S.value)">
+        <ion-select-option value="Sim">Sim</ion-select-option>
+        <ion-select-option value="Não">Não</ion-select-option>
+      </ion-select>
+    </ion-item>  
+  </ion-list>
 
-  <br>
-  <ion-item>
-    <ion-text>Qual a idade do seu cavalo?</ion-text>
-    <ion-label color="medium" position="floating">digite a idade de seu cavalo</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+  <div *ngIf="checkSelector">
+    <br>
+    <ion-item>
+      <ion-text>Qual a idade do seu cavalo?</ion-text>
+      <ion-label color="medium" position="floating">digite a idade de seu cavalo</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
 
-  <br>
-  <ion-item>
-    <ion-text>Ferradura</ion-text>
-    <ion-label color="medium" position="floating">digite o tipo de ferradura do seu cavalo</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+    <br>
+    <ion-item>
+      <ion-text>Qual o tipo de ferradura?</ion-text>
+      <ion-label color="medium" position="floating">digite o tipo de ferradura do seu cavalo</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </div>
+  
 
   <br>
   <ion-button class="ion-default-button" expand="block" (click)="presentAlert()" routerLink="/make-a-ride" >ENVIAR DADOS</ion-button>
