@@ -65,6 +65,7 @@
   </ion-item>
   
   <ion-list>  
+    <div>
     <ion-item>
       <ion-label>Já possui um cavalo?</ion-label>
       <ion-select placeholder="Selecionar" #S (ionChange)="showPage(S.value)">
@@ -72,6 +73,7 @@
         <ion-select-option value="Não">Não</ion-select-option>
       </ion-select>
     </ion-item>  
+  </div>
   </ion-list>
 
   <div *ngIf="checkSelector">

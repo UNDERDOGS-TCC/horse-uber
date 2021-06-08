@@ -12,4 +12,12 @@
     --background: none;
     background-color: $header-background-color;
   }
+
+  ion-select {
+    color: #000000;
+  
+    --placeholder-color: #000000;
+
+    --placeholder-opacity: 1;
+  }
 }
