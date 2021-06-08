@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
 export class GanheDinheiroCavalgandoPage implements OnInit {
   checkSelector:boolean;
 
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController) {}
 
   showPage(valor:string){
     this.checkSelector = valor === "Sim"? true : false;
@@ -32,5 +32,5 @@ export class GanheDinheiroCavalgandoPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
-
+  
 }
